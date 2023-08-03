@@ -34,7 +34,7 @@
 ## 1 Einführung
 
 Alle Pexonians sind herzlich eingeladen, interessante Open-Source Projekte zu gestalten und diese in unserer GitHub Organisation zu veröffentlichen.  
-Unsere Firma strebt danach, fesselnde Technologien zu kreieren, einzusetzen und zu fördern.  
+Pexon strebt danach, fesselnde Technologien zu kreieren, einzusetzen und zu fördern.  
 Unser Ziel ist es, sämtliche Entwickler zu unterstützen und zu ermutigen, Neues zu schaffen.  
 Dieses Dokument fungiert als Richtlinie für unsere Code-Qualität und die Struktur unserer Repositories.  
 Es soll die Zusammenarbeit während der Entwicklung erleichtern und die Veröffentlichung der Projekte auf einen einheitlichen Standard bringen.  
