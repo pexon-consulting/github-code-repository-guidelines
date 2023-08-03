@@ -1,5 +1,38 @@
 # Github Code-Repository Guidelines
 
+## Table of Content
+
+<!-- toc -->
+
+- [1 Einführung](#1-einfuhrung)
+- [2 Git Repository](#2-git-repository)
+  * [2.1 Readme Datei](#21-readme-datei)
+  * [Projektbescheibung](#projektbescheibung)
+  * [Badges](#badges)
+  * [Quickstart-Guide](#quickstart-guide)
+  * [Link zu weiteren Ressourcen](#link-zu-weiteren-ressourcen)
+  * [Acknowledgements](#acknowledgements)
+  * [Kontaktdaten](#kontaktdaten)
+  * [2.2 Git Branching-Strategie](#22-git-branching-strategie)
+    + [2.2.1 Allgemeine Regeln](#221-allgemeine-regeln)
+    + [2.2.2 Hauptbranch](#222-hauptbranch)
+    + [2.2.3 Sekundärbranches](#223-sekundarbranches)
+  * [2.3 Tags, Releases und Versionierung](#23-tags-releases-und-versionierung)
+    + [2.3.1 Tags und Releases](#231-tags-und-releases)
+    + [2.3.2 Versionierung](#232-versionierung)
+- [3 Source Code und Code Commits](#3-source-code-und-code-commits)
+  * [3.1 Source Code Quality & Style](#31-source-code-quality--style)
+  * [3.2 Code Commits](#32-code-commits)
+    + [3.2.1 Commit Nachrichtne](#321-commit-nachrichtne)
+  * [2.2 Dokumentation](#22-dokumentation)
+  * [2.3 Practices](#23-practices)
+  * [2.4 Git Commit Regeln](#24-git-commit-regeln)
+  * [Lizenz](#lizenz)
+  * [2.3 Clean Code](#23-clean-code)
+- [3 Organisation](#3-organisation)
+
+<!-- tocstop -->
+
 ## 1 Einführung
 
 Alle Pexonians sind herzlich eingeladen, interessante Open-Source Projekte zu gestalten und diese in unserer GitHub Organisation zu veröffentlichen.  
