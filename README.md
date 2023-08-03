@@ -4,32 +4,30 @@
 
 <!-- toc -->
 
-- [1 Einführung](#1-einfuhrung)
-- [2 Git Repository](#2-git-repository)
-  * [2.1 Readme Datei](#21-readme-datei)
-  * [Projektbescheibung](#projektbescheibung)
-  * [Badges](#badges)
-  * [Quickstart-Guide](#quickstart-guide)
-  * [Link zu weiteren Ressourcen](#link-zu-weiteren-ressourcen)
-  * [Acknowledgements](#acknowledgements)
-  * [Kontaktdaten](#kontaktdaten)
-  * [2.2 Git Branching-Strategie](#22-git-branching-strategie)
-    + [2.2.1 Allgemeine Regeln](#221-allgemeine-regeln)
-    + [2.2.2 Hauptbranch](#222-hauptbranch)
-    + [2.2.3 Sekundärbranches](#223-sekundarbranches)
-  * [2.3 Tags, Releases und Versionierung](#23-tags-releases-und-versionierung)
-    + [2.3.1 Tags und Releases](#231-tags-und-releases)
-    + [2.3.2 Versionierung](#232-versionierung)
-- [3 Source Code und Code Commits](#3-source-code-und-code-commits)
-  * [3.1 Source Code Quality & Style](#31-source-code-quality--style)
-  * [3.2 Code Commits](#32-code-commits)
-    + [3.2.1 Commit Nachrichtne](#321-commit-nachrichtne)
-  * [2.2 Dokumentation](#22-dokumentation)
-  * [2.3 Practices](#23-practices)
-  * [2.4 Git Commit Regeln](#24-git-commit-regeln)
-  * [Lizenz](#lizenz)
-  * [2.3 Clean Code](#23-clean-code)
-- [3 Organisation](#3-organisation)
+- [Github Code-Repository Guidelines](#github-code-repository-guidelines)
+  - [Table of Content](#table-of-content)
+  - [1 Einführung](#1-einführung)
+  - [2 Git Repository](#2-git-repository)
+    - [2.1 Readme Datei](#21-readme-datei)
+      - [Projektbescheibung](#projektbescheibung)
+      - [Badges](#badges)
+      - [Quickstart-Guide](#quickstart-guide)
+      - [Link zu weiteren Ressourcen](#link-zu-weiteren-ressourcen)
+      - [Acknowledgements](#acknowledgements)
+      - [Kontaktdaten](#kontaktdaten)
+    - [2.2 Git Branching-Strategie](#22-git-branching-strategie)
+      - [2.2.1 Allgemeine Regeln](#221-allgemeine-regeln)
+      - [2.2.2 Hauptbranch](#222-hauptbranch)
+      - [2.2.3 Sekundärbranches](#223-sekundärbranches)
+    - [2.3 Tags, Releases und Versionierung](#23-tags-releases-und-versionierung)
+      - [2.3.1 Tags und Releases](#231-tags-und-releases)
+      - [2.3.2 Versionierung](#232-versionierung)
+  - [3 Source Code und Code Commits](#3-source-code-und-code-commits)
+    - [3.1 Source Code Quality \& Style](#31-source-code-quality--style)
+    - [3.2 Code Commits](#32-code-commits)
+      - [3.2.1 Commit Nachrichtne](#321-commit-nachrichtne)
+      - [3.3 Merges und Rebases](#33-merges-und-rebases)
+    - [3.3 Lizenz](#33-lizenz)
 
 <!-- tocstop -->
 
@@ -54,12 +52,12 @@ Trotzdem sollte sie genügend Wissen vermitteln, um die meisten Fragen der Entwi
 
 ***Folgende Punkte müssen in der Readme Datei zu finden sein:***
 
-### Projektbescheibung
+#### Projektbescheibung
 
 Am Anfang der Readme-Datei befindet sich eine knappe Zusammenfassung, die als "Executive Summary" für das Projekt und das Repository fungiert.  
 In nur wenigen Sätzen soll der Leser einen groben Überblick darüber erhalten, worum es bei dem Projekt geht und welche Inhalte in diesem Repository zu finden sind.  
 
-### Badges
+#### Badges
 
 An zweiter Stelle sollten Projekt-Badges ("Shields") zu finden sein.  
 Dieses Badges geben einen Überblick über verschiedene Attribute des Repositories geben.  
@@ -72,7 +70,7 @@ Zu diesen Badges gehören unter anderem:
 
 Shields können über den Folgen Links generiert werden: [shields.io](https://shields.io/)
 
-### Quickstart-Guide
+#### Quickstart-Guide
 
 Der Quickstart-Guide stellt eines der zentralen Elemente innerhalb der Readme-Datei dar.  
 Er umreißt die Schritte, die ein Nutzer befolgen muss, um das Projekt usw. nutzen zu können.  
@@ -81,17 +79,17 @@ Das bedeutet, der Verfasser des Leitfadens sollte sich in die Lage einer Person 
 Folglich müssen klare Informationen bereitgestellt werden, wie das Projekt genutzt werden kann, welche Vorbedingungen erfüllt sein müssen, ob spezifische Konfigurationen angepasst werden müssen und so weiter.  
 Idealerweise mündet der Leitfaden in einem "Hello World!"-Beispiel. Das bedeutet, er sollte so weit gehen, bis der Nutzer das Projekt usw. gestartet hat und ein einfaches Ergebnis sieht.  
 
-### Link zu weiteren Ressourcen
+#### Link zu weiteren Ressourcen
 
 In diesem Abschnitt der Readme sollen weiteren Ressourcen verlinkt werden, welche die Nutzung des Projekts unterstützen.
 Dazu gehören unter anderem Verweise zu einer Wiki oder eine Demo.
 
-### Acknowledgements
+#### Acknowledgements
 
 Anerkenntnisse jeglicher Form haben hier ihren Platz.  
 Dazu gehören Punkte wie Danksagungen an wichtige Contributor, Sponsoren, usw.
 
-### Kontaktdaten
+#### Kontaktdaten
 
 Hier einen Verweis mit dem Nutzer and Hilfe kommen können, wenn sie diese benötigen. Dies kann eine E-Mail (nicht empfohlen) oder ein Link zur Issue Page sein.
 
@@ -189,35 +187,18 @@ Alle Nachrichten folgen dem Schema:
     <ticket_nr>: <Commit_Titel>  
 
     <Commit_Beschreibung>
+    
+#### 3.3 Merges und Rebases
+Um eine saubere Commit History zu gewährleisten dürfen Changes von anderen Branches nur mit dem `git merge` oder dem `git rebase` Befehl eingefügt werden. Dabei darf nur eine der beiden Methoden genutzt werden.  
+Dem Branch-Owner ist überlassen welche der beiden genutzt wird.  
+Weitere Informationen: Siehe [Merging vs. Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)  
 
-### 2.2 Dokumentation
+Beim Merge auf den `main`-Branch via PR müssen die Commits auf dem eingehenden Branch mit dem `git squash`-Befehl oder per IDE komprimiert werden.  
+Weitere Informationen: Siehe [Git Squash Commits](https://www.baeldung.com/ops/git-squash-commits)
 
-- Git Dokumentationstools verwenden
 
-### 2.3 Practices
-
-- Release Strategy
-- Tages
-- Artefakte
-- Github Actions
-- Package Management
-
-### 2.4 Git Commit Regeln
-
-- Git Authorship
-- Commit Messages folgen Schema (evtl. Husky miteinbauen)
-- Rebase > Merge
-- Squash before Merge
-
-### Lizenz
+### 3.3 Lizenz
 
 Für unsere Open Source Projekte nutzen wir Grundsätzlich die [GPL3 Lizenz](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3).  
 Diese ist in jeder Codebase beizulegen.  
-Abweichende Lizenzen sind je nach Projekt aus verschiedenen Gründen auch nutzbar. 
-
-### 2.3 Clean Code
-
-- Clean Code Guidelines der jew. Sprache beachten
-- Pexon Prefered Code Format für Sprache beachten
-
-## 3 Organisation
+Abweichende Lizenzen sind je nach Projekt aus verschiedenen Gründen auch nutzbar.
