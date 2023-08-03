@@ -1,10 +1,11 @@
-# Github Code-Repository Guidelines
+# Github Code-Repository Guidelines ![Static Badge](https://img.shields.io/badge/PRs-Welcome-green)
+
 
 ## Table of Content
 
 <!-- toc -->
 
-- [Github Code-Repository Guidelines](#github-code-repository-guidelines)
+- [Github Code-Repository Guidelines ](#github-code-repository-guidelines-)
   - [Table of Content](#table-of-content)
   - [1 Einführung](#1-einführung)
   - [2 Git Repository](#2-git-repository)
@@ -22,20 +23,32 @@
     - [2.3 Tags, Releases und Versionierung](#23-tags-releases-und-versionierung)
       - [2.3.1 Tags und Releases](#231-tags-und-releases)
       - [2.3.2 Versionierung](#232-versionierung)
+    - [2.4 `.gitignore`-Datei](#24-gitignore-datei)
   - [3 Source Code und Code Commits](#3-source-code-und-code-commits)
     - [3.1 Source Code Quality \& Style](#31-source-code-quality--style)
     - [3.2 Code Commits](#32-code-commits)
       - [3.2.1 Commit Nachrichtne](#321-commit-nachrichtne)
       - [3.3 Merges und Rebases](#33-merges-und-rebases)
     - [3.3 Lizenz](#33-lizenz)
+  - [4 API Entwicklung](#4-api-entwicklung)
+    - [4.1 Einleitung](#41-einleitung)
+    - [4.2 API Design](#42-api-design)
+      - [4.2.1 API Anfragen](#421-api-anfragen)
+      - [4.2.2 API Antworten](#422-api-antworten)
+      - [4.2.3 API Dokumentation](#423-api-dokumentation)
 
 <!-- tocstop -->
 
 ## 1 Einführung
 
 Alle Pexonians sind herzlich eingeladen, interessante Open-Source Projekte zu gestalten und diese in unserer GitHub Organisation zu veröffentlichen.  
-Unsere Firma strebt danach, fesselnde Technologien zu kreieren, einzusetzen und zu fördern.  
+Pexon strebt danach, fesselnde Technologien zu kreieren, einzusetzen und zu fördern.  
+
+Die Pexon Consulting GmbH spezialisiert sich auf die IT Beratung & Entwicklung für die Bereiche Cloud, DevOps und Data.  
+Wir sind in ganz Deutschland vertreten – mit Standorten in Frankfurt, Eschborn, Berlin, Magdeburg und Hamburg.  
 Unser Ziel ist es, sämtliche Entwickler zu unterstützen und zu ermutigen, Neues zu schaffen.  
+Dafür wollen wir der Entwickler-Community unsere Tools und Projekte bereitstellen, welche wir selbst Nutzten und aufbauen.  
+
 Dieses Dokument fungiert als Richtlinie für unsere Code-Qualität und die Struktur unserer Repositories.  
 Es soll die Zusammenarbeit während der Entwicklung erleichtern und die Veröffentlichung der Projekte auf einen einheitlichen Standard bringen.  
 Projekte können eigenständige Programme, Frameworks, Libraries, Plugins, Extentions, Dokumente und vieles weiteres sein.  Im folgenden Dokument werde sie alle kollektiv als "Projekt" bezeichent.
@@ -99,7 +112,8 @@ Jedes Repository folgt der gleichen Branching-Strategie.
 
 #### 2.2.1 Allgemeine Regeln
 
-Alle Branches sollten über eine Pipeline verfügen, welche Tests durchführt und Code Qualität mithilfe von SonarQube prüft. Sollte dies aus technischen Gründen nicht möglich sein entfällt diese Regel.   
+Alle Branches sollten über eine Pipeline verfügen, welche Tests durchführt und Code Qualität mithilfe von SonarQube prüft. Sollte dies aus technischen Gründen nicht möglich sein entfällt diese Regel.  
+
 
 #### 2.2.2 Hauptbranch
 
@@ -114,7 +128,12 @@ Mehr Informationen zur Versionierung um entsprechenden Kapitel.
 
 #### 2.2.3 Sekundärbranches
 
-Ein Nebenbranch muss einen der folgenden Namen haben:  
+Tatsächliche Entwicklungsarbeit muss in einem Sekundärbranch durchgeführt werden.  
+Sekundärbranches werden vom Hauptbranch oder von einem anderen Sekundärbranch abgeleitet. Dieser Brnach gilt dann als Quellbranch  
+Bevor ein Sekundärbranch gepushed wird sollte ein Merge vom oder Rebase auf den Quellbranch durchgeführt werden.  
+
+
+Ein Sekundärbranch muss einen der folgenden Namen haben:  
 
 - `dev`
 - `feature/*`
@@ -152,6 +171,22 @@ Inkrementiere ...
 - ... MINOR, bei non-breaking changes.
 - ... PATCH, bei non-breaking bug fixes.
 
+### 2.4 `.gitignore`-Datei
+
+Eine .gitignore-Datei ist eine Konfigurationsdatei in einem Git-Repository, die angibt, welche Dateien und Verzeichnisse von Git ignoriert werden sollen.  
+Wenn du Änderungen an deinem Code oder deinem Projekt vornimmst und diese in einem Git-Repository verfolgst, gibt es oft Dateien oder Verzeichnisse, die automatisch generiert werden oder temporäre Daten enthalten, die du nicht im Repository speichern möchtest.  
+Diese könnten beispielsweise Kompilierungsresultate, temporäre Dateien, Logdateien, Konfigurationsdateien mit vertraulichen Informationen oder andere lokale Konfigurationen sein.  
+
+Die .gitignore-Datei erlaubt es dir, diese Dateien und Verzeichnisse zu spezifizieren, sodass Git sie beim Commit und der Versionsverwaltung ignoriert.  
+Dadurch wird verhindert, dass unnötige oder sensible Daten im Repository gespeichert werden.  
+Die .gitignore-Datei enthält Muster und Pfade zu den Dateien und Verzeichnissen, die ausgeschlossen werden sollen.
+
+Die Syntax der .gitignore-Datei ermöglicht die Verwendung von Wildcards und regulären Ausdrücken, um verschiedene Dateitypen oder Muster von Dateinamen zu erfassen.  
+Sie ist somit ein nützliches Werkzeug, um dein Repository sauber zu halten und sicherzustellen, dass nur die relevanten Dateien und Verzeichnisse im Versionskontrollsystem verfolgt werden.  
+
+Ein Projekt sollte immer eine `.gitignore`-Datei besitzen, die auf das Projekt angepasst ist.  
+Ein Template kann sich mit Github beim Erstellen eines leeren Repositories automatisch generieren lassen.  
+Alternativ biete [diese](https://github.com/pexon-consulting/github-code-repository-guidelines/blob/main/.gitignore) `.gitignore`-Datei einen guten Startpunk.
 
 ## 3 Source Code und Code Commits
 
@@ -202,3 +237,53 @@ Weitere Informationen: Siehe [Git Squash Commits](https://www.baeldung.com/ops/g
 Für unsere Open Source Projekte nutzen wir Grundsätzlich die [GPL3 Lizenz](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3).  
 Diese ist in jeder Codebase beizulegen.  
 Abweichende Lizenzen sind je nach Projekt aus verschiedenen Gründen auch nutzbar.
+
+## 4 API Entwicklung
+
+### 4.1 Einleitung
+
+Dieses Kapitel richtet sich an API-Projekte und erklärt einige Richtlinien an die sich bei der Entwicklung gehalten werden muss.  
+Spezifisch werden hier REST-APIs für Web-Anwendungen beschrieben.  
+
+### 4.2 API Design
+
+Das Design API sollte den üblichen API Best-Practices entsprechen.
+
+#### 4.2.1 API Anfragen
+
+API URLs nutzen `kebab-case`.  
+URL Parameter nutzen `camelCase`.  
+URL Pfade die eine Sammlung ansteuern nutzen den Plural des Resourcennamens (Beispiel: `/users` anstatt `/user`).  
+HTTP Verben beschreiben die grundsätzliche Funktion der API-Operation.  
+Vermeide URL Pfade mit mehr als einem Parameter. Verwende stattdessen `QueryParameter`.  
+Der Request- und Response-Body sollte der standard JSON-Konvention entsprechen.  
+Vermeide Verben für URL Pfade die Ressourcen ansprechen, nutze stattdessen Nomen.  
+Nutze Verben für Non-Ressourcen.  
+
+
+| **VERB** | **Beschreibung**                                          |
+|----------|-----------------------------------------------------------|
+| GET      | Genutzt um eine einzelne Resource abzurufen               |
+| POST     | Genutzt um eine neue Resource oder Sub-Resource anzulegen |
+| PUT      | Genutzt um eine existierende Resource zu updaten          |
+| PATCH    | Genutzt um eine existierende Resource zu updaten          |
+| DELETE   | Genutzt um eine existierende Resource zu löschen          |
+
+#### 4.2.2 API Antworten
+
+Eine API sollte immer eine Antwort geben, unabhängig vom Erfolg oder Qualität der Anfrage.  
+Dabei enthalten die Antworten immer einen HTTP-Status Code der die Antwort am bestmöglichen Beschreibt.  
+
+| **Code** | **Beschreibung**                                                             |
+|----------|------------------------------------------------------------------------------|
+| 1XX      | Die Anfrage wurde empfangen und verstanden                                   |
+| 2XX      | Die Anfrage wurde empfangen, verstanden und war erfolgreich                  |
+| 3XX      | Der Client muss weitere Schritte tätigen um  den Request zu vervollständigen |
+| 4XX      | Die Anfrage hat einen Fehler, erzeugt welcher vom Client ausgeht.            |
+| 5XX      | Die Anfrage hat einen Fehler, erzeugt welcher vom Server ausgeht.            |
+
+#### 4.2.3 API Dokumentation
+
+Die API sollte mit der OpenAPI Spezifikation entsprechen und mit industrieüblichen Tools wie Swagger dokumentiert werden.  
+Dabei sollte die Dokumentation entsprechende Beispiele beinhalten die eine Anfrage und eine Antwort exemplarisch darstellen.
+Wenn dies technisch nicht umsetzbar ist kann diese Regel ausgelassen werden.  
