@@ -24,6 +24,9 @@
       - [2.3.1 Tags und Releases](#231-tags-und-releases)
       - [2.3.2 Versionierung](#232-versionierung)
     - [2.4 `.gitignore`-Datei](#24-gitignore-datei)
+    - [2.5 Issues und Issue-Templates](#25-issues-und-issue-templates)
+      - [2.5.1 Issues](#251-issues)
+    - [2.5.2 Templates](#252-templates)
   - [3 Source Code und Code Commits](#3-source-code-und-code-commits)
     - [3.1 Source Code Quality \& Style](#31-source-code-quality--style)
     - [3.2 Code Commits](#32-code-commits)
@@ -188,6 +191,34 @@ Ein Projekt sollte immer eine `.gitignore`-Datei besitzen, die auf das Projekt a
 Ein Template kann sich mit Github beim Erstellen eines leeren Repositories automatisch generieren lassen.  
 Alternativ biete [diese](https://github.com/pexon-consulting/github-code-repository-guidelines/blob/main/.gitignore) `.gitignore`-Datei einen guten Startpunk.
 
+### 2.5 Issues und Issue-Templates
+
+#### 2.5.1 Issues
+
+Bugs und Features müssen über Github Issues vorgeschlagen werden.  
+Sollte ein Issue für mehr als 90 Tage keine neues update bekommen gibt es als Inaktiv und muss geschlossen werden.  
+Dafür lassen sich automatisch Github Actions erstellen.  
+Ein respektvoller und sachlicher Umgang miteinander innerhalb der Issue-Diskusion ist hierbei selbstverständlich Pflicht.  
+
+### 2.5.2 Templates
+
+Das einrichten von Templates für Bugs und Features hilft die Angelegenheiten einfacher zu erklären und zu verstehen.  
+Templates müssen pro Repository eingerichtet werden.  
+Dabei bietet Github selbst vorgefertigte Templates, welche in den meisten Fällen ausreichen.  
+Bei bedarf können die Templates zu jedem Zeitpunkt geändert werden.  
+Das Einrichten der Templates funktioniert wie folgt:
+
+  1. Auf der Repository Startseite, navigiere zu "Settings"
+  2. Unter "General", scrolle etwas weiter runter zum Kasten "Features"
+  3. Aktivere ein Eintrag "Issues"
+  4. Klicke auf den grünen Button "Set up Templates"
+  5. Im Dropdown Button "Add Template" wähle das gewünschte Template aus. Hier kann man zwischen "bug report", "Feature request", und "Custom Template" auswählen.
+  6. Optional: Überprüfe das Template und führe ggf. Änderungen durch.
+  7. Klicke auf "Propose Changes"
+  8. Im sich nun öffnenden Abschnitt, füge eine passende Commit-Nachricht hinzu.
+  9. Wähle die Option einen neuen Branch und PR zu erstellen
+  10. Klicke auf "Commit changes"
+
 
 ## 3 Source Code und Code Commits
 
@@ -300,3 +331,4 @@ Generell sollte jeder API-Endpunk die folgende Dokumentation besitzen:
 - [elsewhencode/project-guidelines](https://github.com/elsewhencode/project-guidelines)
 - [Kristories/awesome-guidelines](https://github.com/Kristories/awesome-guidelines)
 - [Swagger best Practices in API Design](https://swagger.io/resources/articles/best-practices-in-api-design/)
+- [Configuring issue templates for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
