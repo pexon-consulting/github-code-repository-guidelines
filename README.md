@@ -1,11 +1,11 @@
-# Github Code-Repository Guidelines ![Static Badge](https://img.shields.io/badge/PRs-Welcome-green)
+# Github Code-Repository Guidelines ![Static Badge](https://img.shields.io/badge/PRs-Welcome-green) ![Static Badge](https://img.shields.io/badge/Version-0.1.0-blue)
 
 
 ## Table of Content
 
 <!-- toc -->
 
-- [Github Code-Repository Guidelines ](#github-code-repository-guidelines-)
+- [Github Code-Repository Guidelines  ](#github-code-repository-guidelines--)
   - [Table of Content](#table-of-content)
   - [1 Einführung](#1-einführung)
   - [2 Git Repository](#2-git-repository)
@@ -36,6 +36,7 @@
       - [4.2.1 API Anfragen](#421-api-anfragen)
       - [4.2.2 API Antworten](#422-api-antworten)
       - [4.2.3 API Dokumentation](#423-api-dokumentation)
+  - [5 Quellen](#5-quellen)
 
 <!-- tocstop -->
 
@@ -108,12 +109,11 @@ Hier einen Verweis mit dem Nutzer and Hilfe kommen können, wenn sie diese benö
 
 ### 2.2 Git Branching-Strategie
 
-Jedes Repository folgt der gleichen Branching-Strategie. 
+Jedes Repository folgt der gleichen Branching-Strategie.
 
 #### 2.2.1 Allgemeine Regeln
 
 Alle Branches sollten über eine Pipeline verfügen, welche Tests durchführt und Code Qualität mithilfe von SonarQube prüft. Sollte dies aus technischen Gründen nicht möglich sein entfällt diese Regel.  
-
 
 #### 2.2.2 Hauptbranch
 
@@ -131,7 +131,6 @@ Mehr Informationen zur Versionierung um entsprechenden Kapitel.
 Tatsächliche Entwicklungsarbeit muss in einem Sekundärbranch durchgeführt werden.  
 Sekundärbranches werden vom Hauptbranch oder von einem anderen Sekundärbranch abgeleitet. Dieser Brnach gilt dann als Quellbranch  
 Bevor ein Sekundärbranch gepushed wird sollte ein Merge vom oder Rebase auf den Quellbranch durchgeführt werden.  
-
 
 Ein Sekundärbranch muss einen der folgenden Namen haben:  
 
@@ -163,6 +162,7 @@ Releases können nur vom Stand des `main`-Branches erstellt werden.
 Sollten aus anderen Branches Releases erstellt werden, so müssen sie mit dem Postfix `-unstable` markiert werden.  
 
 #### 2.3.2 Versionierung
+
 Stabile Releases (Releases vom `main`-Branch) folgen der standard [Semver](https://semver.org/)-Konvention `MAJOR.MINOR.PATCH`  
 Dabei stehen `MAJOR`, `MINOR` und `PATCH` für positive Ganzzahlen und dürfen keine vorstehende "0" haben.  
 Inkrementiere ...
@@ -188,6 +188,7 @@ Ein Projekt sollte immer eine `.gitignore`-Datei besitzen, die auf das Projekt a
 Ein Template kann sich mit Github beim Erstellen eines leeren Repositories automatisch generieren lassen.  
 Alternativ biete [diese](https://github.com/pexon-consulting/github-code-repository-guidelines/blob/main/.gitignore) `.gitignore`-Datei einen guten Startpunk.
 
+
 ## 3 Source Code und Code Commits
 
 Dieser Abschnitt listet das Regelwerk auf, welches von jedem Entwickler eines Projektes in dieser Organisation zu befolgen ist.  
@@ -211,7 +212,8 @@ Weitere Guides zu diesen und weiteren Sprachen, Frameworks und Tools sind zu fin
 ### 3.2 Code Commits
 
 #### 3.2.1 Commit Nachrichtne
-Commit Titel müssen kurz und kompakt sein. Dabei müssen sie die wichtigsten Changes im Commit nennnen.   
+
+Commit Titel müssen kurz und kompakt sein. Dabei müssen sie die wichtigsten Changes im Commit nennnen.
 Commit Beschreibungen dürfen tiefer ins Detail gehen.  
 Commit Beschreibungen sind optional aber empfohlen.  
 Commit Titel und Beschreibungen dürfen entweder Deutsch oder Englisch sein, jedoch muss pro Branch eine Sprache eingehalten werden.  
@@ -222,15 +224,15 @@ Alle Nachrichten folgen dem Schema:
     <ticket_nr>: <Commit_Titel>  
 
     <Commit_Beschreibung>
-    
+
 #### 3.3 Merges und Rebases
+
 Um eine saubere Commit History zu gewährleisten dürfen Changes von anderen Branches nur mit dem `git merge` oder dem `git rebase` Befehl eingefügt werden. Dabei darf nur eine der beiden Methoden genutzt werden.  
 Dem Branch-Owner ist überlassen welche der beiden genutzt wird.  
 Weitere Informationen: Siehe [Merging vs. Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)  
 
 Beim Merge auf den `main`-Branch via PR müssen die Commits auf dem eingehenden Branch mit dem `git squash`-Befehl oder per IDE komprimiert werden.  
 Weitere Informationen: Siehe [Git Squash Commits](https://www.baeldung.com/ops/git-squash-commits)
-
 
 ### 3.3 Lizenz
 
@@ -260,9 +262,8 @@ Der Request- und Response-Body sollte der standard JSON-Konvention entsprechen.
 Vermeide Verben für URL Pfade die Ressourcen ansprechen, nutze stattdessen Nomen.  
 Nutze Verben für Non-Ressourcen.  
 
-
 | **VERB** | **Beschreibung**                                          |
-|----------|-----------------------------------------------------------|
+| -------- | --------------------------------------------------------- |
 | GET      | Genutzt um eine einzelne Resource abzurufen               |
 | POST     | Genutzt um eine neue Resource oder Sub-Resource anzulegen |
 | PUT      | Genutzt um eine existierende Resource zu updaten          |
@@ -275,7 +276,7 @@ Eine API sollte immer eine Antwort geben, unabhängig vom Erfolg oder Qualität 
 Dabei enthalten die Antworten immer einen HTTP-Status Code der die Antwort am bestmöglichen Beschreibt.  
 
 | **Code** | **Beschreibung**                                                             |
-|----------|------------------------------------------------------------------------------|
+| -------- | ---------------------------------------------------------------------------- |
 | 1XX      | Die Anfrage wurde empfangen und verstanden                                   |
 | 2XX      | Die Anfrage wurde empfangen, verstanden und war erfolgreich                  |
 | 3XX      | Der Client muss weitere Schritte tätigen um  den Request zu vervollständigen |
@@ -287,3 +288,15 @@ Dabei enthalten die Antworten immer einen HTTP-Status Code der die Antwort am be
 Die API sollte mit der OpenAPI Spezifikation entsprechen und mit industrieüblichen Tools wie Swagger dokumentiert werden.  
 Dabei sollte die Dokumentation entsprechende Beispiele beinhalten die eine Anfrage und eine Antwort exemplarisch darstellen.
 Wenn dies technisch nicht umsetzbar ist kann diese Regel ausgelassen werden.  
+Generell sollte jeder API-Endpunk die folgende Dokumentation besitzen:
+
+- Jeder URL Parameter soll spezifiziert und als "erforderlich" oder "optional" gekennzeichnet sein.
+- Wenn der Request-Typ "POST" ist, sollte ein funktionierendes Beispiel angefügt werden.
+- Eine erfolgreiche Antwort sollte beispielhaft angefügt sein.
+- Potentielle Fehlernachrichten sollten angefügt sein.
+
+## 5 Quellen
+
+- [elsewhencode/project-guidelines](https://github.com/elsewhencode/project-guidelines)
+- [Kristories/awesome-guidelines](https://github.com/Kristories/awesome-guidelines)
+- [Swagger best Practices in API Design](https://swagger.io/resources/articles/best-practices-in-api-design/)
