@@ -26,7 +26,7 @@
     - [2.4 `.gitignore`-Datei](#24-gitignore-datei)
     - [2.5 Issues und Issue-Templates](#25-issues-und-issue-templates)
       - [2.5.1 Issues](#251-issues)
-    - [2.5.2 Templates](#252-templates)
+      - [2.5.2 Templates](#252-templates)
   - [3 Source Code und Code Commits](#3-source-code-und-code-commits)
     - [3.1 Source Code Quality \& Style](#31-source-code-quality--style)
     - [3.2 Code Commits](#32-code-commits)
@@ -203,7 +203,7 @@ Sollte ein Issue für mehr als 90 Tage keine neues update bekommen gibt es als I
 Dafür lassen sich automatisch Github Actions erstellen.  
 Ein respektvoller und sachlicher Umgang miteinander innerhalb der Issue-Diskusion ist hierbei selbstverständlich Pflicht.  
 
-### 2.5.2 Templates
+#### 2.5.2 Templates
 
 Das einrichten von Templates für Bugs und Features hilft die Angelegenheiten einfacher zu erklären und zu verstehen.  
 Templates müssen pro Repository eingerichtet werden.  
