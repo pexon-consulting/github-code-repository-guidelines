@@ -30,9 +30,10 @@
   - [3 Source Code und Code Commits](#3-source-code-und-code-commits)
     - [3.1 Source Code Quality \& Style](#31-source-code-quality--style)
     - [3.2 Code Commits](#32-code-commits)
-      - [3.2.1 Commit Nachrichtne](#321-commit-nachrichtne)
-      - [3.3 Merges und Rebases](#33-merges-und-rebases)
-    - [3.3 Lizenz](#33-lizenz)
+    - [3.3 Merges und Rebases](#33-merges-und-rebases)
+    - [3.4 Pull Requests](#34-pull-requests)
+    - [3.5 Lizenz](#35-lizenz)
+    - [3.6 Code Coverage](#36-code-coverage)
   - [4 API Entwicklung](#4-api-entwicklung)
     - [4.1 Einleitung](#41-einleitung)
     - [4.2 API Design](#42-api-design)
@@ -153,7 +154,9 @@ Ein Sekundärbranch muss einen der folgenden Namen haben:
 Ein PR auf einen Sekundärbranch dürfen nur von Branch-Owner angenommen werden.  
 Branch-Owner ist die Person, die den ältesten Commit auf dem entsprechenden Branch getätigt hat.  
 Branch-Owner bei Branches, welche mit Tickets assoziiert sind, ist die Person, die das Ticket bearbeitet.  
-Ausgenommen hierbei ist der `dev`-Branch.
+Ausgenommen hierbei ist der `dev`-Branch.  
+
+Weitere Informationen über Pull Requests in Kapitel [3.4 Pull Requests](#34-pull-requests)
 
 ### 2.3 Tags, Releases und Versionierung
 
@@ -212,7 +215,7 @@ Das Einrichten der Templates funktioniert wie folgt:
   2. Unter "General", scrolle etwas weiter runter zum Kasten "Features"
   3. Aktivere ein Eintrag "Issues"
   4. Klicke auf den grünen Button "Set up Templates"
-  5. Im Dropdown Button "Add Template" wähle das gewünschte Template aus. Hier kann man zwischen "bug report", "Feature request", und "Custom Template" auswählen.
+  5. Im Dropdown Button "Add Template" wähle das gewünschte Template aus. Hier kann zwischen "bug report", "Feature request", und "Custom Template" ausgewählt werden.
   6. Optional: Überprüfe das Template und führe ggf. Änderungen durch.
   7. Klicke auf "Propose Changes"
   8. Im sich nun öffnenden Abschnitt, füge eine passende Commit-Nachricht hinzu.
@@ -242,8 +245,6 @@ Weitere Guides zu diesen und weiteren Sprachen, Frameworks und Tools sind zu fin
 
 ### 3.2 Code Commits
 
-#### 3.2.1 Commit Nachrichtne
-
 Commit Titel müssen kurz und kompakt sein. Dabei müssen sie die wichtigsten Changes im Commit nennnen.
 Commit Beschreibungen dürfen tiefer ins Detail gehen.  
 Commit Beschreibungen sind optional aber empfohlen.  
@@ -256,7 +257,7 @@ Alle Nachrichten folgen dem Schema:
 
     <Commit_Beschreibung>
 
-#### 3.3 Merges und Rebases
+### 3.3 Merges und Rebases
 
 Um eine saubere Commit History zu gewährleisten dürfen Changes von anderen Branches nur mit dem `git merge` oder dem `git rebase` Befehl eingefügt werden. Dabei darf nur eine der beiden Methoden genutzt werden.  
 Dem Branch-Owner ist überlassen welche der beiden genutzt wird.  
@@ -265,11 +266,39 @@ Weitere Informationen: Siehe [Merging vs. Rebasing](https://www.atlassian.com/gi
 Beim Merge auf den `main`-Branch via PR müssen die Commits auf dem eingehenden Branch mit dem `git squash`-Befehl oder per IDE komprimiert werden.  
 Weitere Informationen: Siehe [Git Squash Commits](https://www.baeldung.com/ops/git-squash-commits)
 
-### 3.3 Lizenz
+### 3.4 Pull Requests
+
+**Features, Changes, Bugs, Hotfixes und weitere Änderungen an der Codebasis werden *ausschließlich* mit Hilfe von Pull Requests in den Hauptbranch übernommen.**  
+
+Die Änderungen in einem Pull Request müssen Atomar sein, dass heißt:  
+**Ein Pull Request = Eine, in sich abgeschlossene, Änderung**.  
+
+Ein Pull Request muss von mindest einem weiteren Contributor oder Code-Owner gereviewed werden.  
+Beim erstellen eines PRs muss ein Template verwendet und ausgefüllt werden. Entsprechende Templates müssen dafür im jeden Repository bereitstehen.  
+Templates sind als Markdown-Datei (`.md`) anzulegen und können in dem Ordner `.github/PULL_REQUEST_TEMPLATE` hinterlegt werden.
+
+
+### 3.5 Lizenz
 
 Für unsere Open Source Projekte nutzen wir Grundsätzlich die [GPL3 Lizenz](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3).  
 Diese ist in jeder Codebase beizulegen.  
 Abweichende Lizenzen sind je nach Projekt aus verschiedenen Gründen auch nutzbar.
+
+### 3.6 Code Coverage
+
+Code coverage beschreibt die prozentuale Menge an Codezeilen, welche durch Tests abgedeckt werden.  
+Auch wenn eine hohe Coverage-Rate nicht automatisch stabiles, bug freien Code garantiert, ist sie trotzdem ein guter Indikator über den generellen Stand einer Test-Suite.  
+Für die gesamte Code-Basis gilt eine Mindestrate von 80% Coverage, empfohlen wird 90%.  
+Für Breaking Changes ist die Mindestrage 90%.  
+Folgende Art von Code zählt nicht in die Coverage rein:
+
+- Pure Datenklassen wie Java-Beans, oder structs
+- Generierte Dateien wie etwas durch pre-processors (Lombok, OpenAPI, Kafka)
+- Boilderplate Methoden (Getters, Setters, pure Constructors)
+- Kommentare
+- Whitespaces
+
+Mit Tools wie SobarQube lassen sich Coverage Ziele und Ausnahmen definieren.
 
 ## 4 API Entwicklung
 
