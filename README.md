@@ -46,7 +46,7 @@
 
 ## 1 Einführung
 
-Alle Pexonians sind herzlich eingeladen, interessante Open-Source Projekte zu gestalten und diese in unserer GitHub Organisation zu veröffentlichen.  
+Alle Pexonians sind herzlich eingeladen, interessante Open-Source Projekte zu entwickeln und diese in unserer GitHub Organisation zu veröffentlichen.  
 Pexon strebt danach, fesselnde Technologien zu kreieren, einzusetzen und zu fördern.  
 
 Die Pexon Consulting GmbH spezialisiert sich auf die IT Beratung & Entwicklung für die Bereiche Cloud, DevOps und Data.  
@@ -232,10 +232,10 @@ Inkrementiere ...
 ### 2.4 `.gitignore`-Datei
 
 Eine .gitignore-Datei ist eine Konfigurationsdatei in einem Git-Repository, die angibt, welche Dateien und Verzeichnisse von Git ignoriert werden sollen.  
-Wenn du Änderungen an deinem Code oder deinem Projekt vornimmst und diese in einem Git-Repository verfolgst, gibt es oft Dateien oder Verzeichnisse, die automatisch generiert werden oder temporäre Daten enthalten, die du nicht im Repository speichern möchtest.  
+Wenn eine Änderungen an deinem Code oder deinem Projekt vorgenommen wird und diese in einem Git-Repository verfolgst, gibt es oft Dateien oder Verzeichnisse, die automatisch generiert werden oder temporäre Daten enthalten, die nicht im Repository gespeichert werden sollen.  
 Diese könnten beispielsweise Kompilierungsresultate, temporäre Dateien, Logdateien, Konfigurationsdateien mit vertraulichen Informationen oder andere lokale Konfigurationen sein.  
 
-Die .gitignore-Datei erlaubt es dir, diese Dateien und Verzeichnisse zu spezifizieren, sodass Git sie beim Commit und der Versionsverwaltung ignoriert.  
+Die .gitignore-Datei ermöglicht es, diese Dateien und Verzeichnisse zu spezifizieren, sodass Git sie beim Commit und der Versionsverwaltung ignoriert.  
 Dadurch wird verhindert, dass unnötige oder sensible Daten im Repository gespeichert werden.  
 Die .gitignore-Datei enthält Muster und Pfade zu den Dateien und Verzeichnissen, die ausgeschlossen werden sollen.
 
@@ -244,7 +244,7 @@ Sie ist somit ein nützliches Werkzeug, um dein Repository sauber zu halten und 
 
 Ein Projekt sollte immer eine `.gitignore`-Datei besitzen, die auf das Projekt angepasst ist.  
 Ein Template kann sich mit Github beim Erstellen eines leeren Repositories automatisch generieren lassen.  
-Alternativ biete [diese](https://github.com/pexon-consulting/github-code-repository-guidelines/blob/main/.gitignore) `.gitignore`-Datei einen guten Startpunk.
+Alternativ bietet [diese](https://github.com/pexon-consulting/github-code-repository-guidelines/blob/main/.gitignore) `.gitignore`-Datei einen guten Startpunk.
 
 ### 2.5 Issues und Issue-Templates
 
@@ -319,18 +319,13 @@ Weitere Informationen: Siehe [Git Squash Commits](https://www.baeldung.com/ops/g
 
 ### 3.4 Pull Requests
 
-**Features, Changes, Bugs, Hotfixes und weitere Änderungen an der Codebasis werden *ausschließlich* mit Hilfe von Pull Requests in den Hauptbranch übernommen.**  
-
-Die Änderungen in einem Pull Request müssen Atomar sein, dass heißt:  
-**Ein Pull Request = Eine, in sich abgeschlossene, Änderung**.  
-
 Ein Pull Request muss von mindest einem weiteren Contributor oder Code-Owner gereviewed werden.  
 Beim erstellen eines PRs muss ein Template verwendet und ausgefüllt werden. Entsprechende Templates müssen dafür im jeden Repository bereitstehen.  
 Templates sind als Markdown-Datei (`.md`) anzulegen und können in dem Ordner `.github/PULL_REQUEST_TEMPLATE` hinterlegt werden.
 
 ### 3.5 Lizenz
 
-Für unsere Open Source Projekte nutzen wir Grundsätzlich die [GPL3 Lizenz](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3).  
+Für unsere Open Source Projekte wird Grundsätzlich die [GPL3 Lizenz](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3) genutzt.  
 Diese ist in jeder Codebase beizulegen.  
 Abweichende Lizenzen sind je nach Projekt aus verschiedenen Gründen auch nutzbar.
 
