@@ -52,9 +52,9 @@ Alle Pexonians sind herzlich eingeladen, interessante Open-Source Projekte zu ge
 Pexon strebt danach, fesselnde Technologien zu kreieren, einzusetzen und zu fördern.
 
 Die Pexon Consulting GmbH spezialisiert sich auf die IT Beratung & Entwicklung für die Bereiche Cloud, DevOps und Data.
-Wir sind in ganz Deutschland vertreten – mit Standorten in Frankfurt, Eschborn, Berlin, Magdeburg und Hamburg.
+Wir sind in ganz Deutschland vertreten – mit Standorten in Frankfurt, Eschborn, München, Berlin, Magdeburg und Hamburg.
 Unser Ziel ist es, sämtliche Entwickler zu unterstützen und zu ermutigen, Neues zu schaffen.
-Dafür wollen wir der Entwickler-Community unsere Tools und Projekte bereitstellen, welche wir selbst Nutzten und aufbauen.
+Dafür wollen wir der Entwickler-Community unsere Tools und Projekte bereitstellen, welche wir selbst nutzen und aufbauen.
 
 Dieses Dokument fungiert als Richtlinie für unsere Code-Qualität und die Struktur unserer Repositories.
 Es soll die Zusammenarbeit während der Entwicklung erleichtern und die Veröffentlichung der Projekte auf einen einheitlichen Standard bringen.
