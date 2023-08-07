@@ -1,6 +1,5 @@
 # Github Code-Repository Guidelines ![Static Badge](https://img.shields.io/badge/PRs-Welcome-green) ![Static Badge](https://img.shields.io/badge/Version-0.1.0-blue)
 
-
 ## Table of Content
 
 <!-- toc -->
@@ -21,8 +20,8 @@
       - [2.2.2 Feature Branches](#222-feature-branches)
       - [2.2.3 Release Branches](#223-release-branches)
       - [2.2.4 Hotfix Branches](#224-hotfix-branches)
-    - [2.3 Tags, Releases und Versionierung](#23-tags-releases-und-versionierung)
-      - [2.3.1 Tags und Releases](#231-tags-und-releases)
+    - [2.3 Releases und Versionierung](#23-releases-und-versionierung)
+      - [2.3.1 Releases](#231-releases)
       - [2.3.2 Versionierung](#232-versionierung)
     - [2.4 `.gitignore`-Datei](#24-gitignore-datei)
     - [2.5 Issues und Issue-Templates](#25-issues-und-issue-templates)
@@ -119,13 +118,14 @@ Det Gitflow Workflow sieht zwei Branches vor, welche die Projekt-Historie dokume
 
 Zusammenfassung der Branches:  
 
-| Branch | Geschützt | Parent | Beschreibung|
-|-----------|--------|--------|-----------------------------------------------------------------------------------|
-|  Main     |  Ja    |  /     |  Stable Branch mit aktuellster Version. Beinhaltet gekürzte Commit-Historie.      |
-|  Dev      |  Ja    |  Main  |  Unstable Branch mit neusten Features.                                            |
-|  Feature  |  Nein  |  Dev   |  Branch auf dem ein neues Feature entwickelt wird.                                |
-|  Release  |  Nein  |  Dev   |  Branch auf dem eine mehrzahl von neuen Features release-fertig gemacht werden.   |
-|  Hotfix   |  Nein  |  Main  |  Branch auf welchem ein kritischer Fehler schnell behoben wird.                   |
+| Branch | Geschützt | Parent   | Beschreibung                                                                                                        |
+|-----------|--------|----------|---------------------------------------------------------------------------------------------------------------------|
+|  Main     |  Ja    |  /       |  Stable Branch mit aktuellster Version, "was gerade in Produktion läuft". Beinhaltet gekürzte Commit-Historie.      |
+|  Dev      |  Ja    |  Main    |  Unstable Branch mit neusten Features.                                                                              |
+|  Feature  |  Nein  |  Dev     |  Branch auf dem ein neues Feature entwickelt wird.                                                                  |
+|  Release  |  Nein  |  Dev     |  Branch auf dem eine mehrzahl von neuen Features release-fertig gemacht werden.                                     |
+|  bugfix   |  Nein  | release  |  Sollten Bugs in Release Branches auftreten sind sie mit Hilfe eines Bugfix Branches zu fixen                       |
+|  Hotfix   |  Nein  |  Main    |  Branch auf welchem ein kritischer Fehler schnell behoben wird.                                                     |
 
 #### 2.2.1 Haupt-Branches
 
@@ -171,14 +171,53 @@ Nach dem mergen ist der neue `main`-Branch mit einer neuen Version zu taggen und
 
 ![Hotfix Branches](static/hotfix-branches.svg)
 
-### 2.3 Tags, Releases und Versionierung
+### 2.3 Releases und Versionierung
 
-#### 2.3.1 Tags und Releases
+Ein gleichbleibendes Releasemanagement und geordnete Versionierung helfen eine bessere Übersicht zu erschaffen und die "Dependency Hell" zu minimieren.  
+Somit gelten für diese Punkte auch einige Regeln.
 
-Den Contributern ist frei überlassen ob und in welchem Abstand releases veröffentlicht werden.  
-Um ein Release zu erstellen wird ein bestimmter Commit mit einem Git Tag versehen.  
-Releases können nur vom Stand des `main`-Branches erstellt werden.  
+#### 2.3.1 Releases
 
+Siehe Kapitel [2.2 Git Branching-Strategie](#22-git-branching-strategie) für weitere Informationen für das generelle Vorgehen und die Nomenklatur von Release-Branches.  
+
+Ein Release-Workflow funktioniert wie folgt:
+
+1. Merge `main` in `dev` um sicherzustellen das der `dev` den produktiven Code besitzt. Dies kann Merge-Konflikte vorbeugen, wenn etwa ein Hotfix nur auf `main` und nicht auf `dev` gemerged wurde.  
+
+```text
+git checkout dev
+git merge master
+```
+
+2. Erstelle einen neuen `release`-Branch von Develop
+
+````text
+git checkout -b release-vX.Y.Z
+git push --set-upstream origin release-vX.Y.Z
+````
+
+3. Falls nötig, behebe bugs im `release`-Branch
+
+````text
+$ git checkout release-vX.Y.Z
+$ git checkout -b hotfix/<name>
+$ git push --set-upstream hotfix/<name>
+<Behebe Fehler>
+$ git commit -m "<commit nachricht>"
+$ git push
+````
+
+4. Wenn der Release fertig ist, eröffne eröffne einen neuen PR in Github
+
+5. Sobald der PR gemerged wurde kann ein neuer Release erstellt werden mit den folgenden Daten:
+    - Tag Version: `vX.Y.Z`
+    - Target: `main`
+    - Release Titel: `Release v.X.Y.Z`
+    - Description: High Level Beschreibung der wichtigsten Änderungen
+
+6. Merge `release`-Branch in den `dev`-Branch
+
+7. Lösche den `release`-Branch
 
 #### 2.3.2 Versionierung
 
@@ -189,8 +228,6 @@ Inkrementiere ...
 - ... MAJOR, bei breaking changes.
 - ... MINOR, bei non-breaking changes.
 - ... PATCH, bei non-breaking bug fixes.
-
-
 
 ### 2.4 `.gitignore`-Datei
 
@@ -236,7 +273,6 @@ Das Einrichten der Templates funktioniert wie folgt:
   8. Im sich nun öffnenden Abschnitt, füge eine passende Commit-Nachricht hinzu.
   9. Wähle die Option einen neuen Branch und PR zu erstellen
   10. Klicke auf "Commit changes"
-
 
 ## 3 Source Code und Code Commits
 
@@ -291,7 +327,6 @@ Die Änderungen in einem Pull Request müssen Atomar sein, dass heißt:
 Ein Pull Request muss von mindest einem weiteren Contributor oder Code-Owner gereviewed werden.  
 Beim erstellen eines PRs muss ein Template verwendet und ausgefüllt werden. Entsprechende Templates müssen dafür im jeden Repository bereitstehen.  
 Templates sind als Markdown-Datei (`.md`) anzulegen und können in dem Ordner `.github/PULL_REQUEST_TEMPLATE` hinterlegt werden.
-
 
 ### 3.5 Lizenz
 
