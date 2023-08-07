@@ -17,9 +17,10 @@
       - [Acknowledgements](#acknowledgements)
       - [Kontaktdaten](#kontaktdaten)
     - [2.2 Git Branching-Strategie](#22-git-branching-strategie)
-      - [2.2.1 Allgemeine Regeln](#221-allgemeine-regeln)
-      - [2.2.2 Hauptbranch](#222-hauptbranch)
-      - [2.2.3 Sekundärbranches](#223-sekundärbranches)
+      - [2.2.1 Haupt-Branches](#221-haupt-branches)
+      - [2.2.2 Feature Branches](#222-feature-branches)
+      - [2.2.3 Release Branches](#223-release-branches)
+      - [2.2.4 Hotfix Branches](#224-hotfix-branches)
     - [2.3 Tags, Releases und Versionierung](#23-tags-releases-und-versionierung)
       - [2.3.1 Tags und Releases](#231-tags-und-releases)
       - [2.3.2 Versionierung](#232-versionierung)
@@ -113,50 +114,62 @@ Hier einen Verweis mit dem Nutzer and Hilfe kommen können, wenn sie diese benö
 
 ### 2.2 Git Branching-Strategie
 
-Jedes Repository folgt der gleichen Branching-Strategie.
+Repositories folgen dem [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).  
+Det Gitflow Workflow sieht zwei Branches vor, welche die Projekt-Historie dokumentieren, den `main`-Branch und den `develop`-Branch (kurz `dev`), und weiteren Nebenbranches, welche von einem der beiden Hauptbranches abgeleitet werden und verschiedenen Nutzen haben.
 
-#### 2.2.1 Allgemeine Regeln
+Zusammenfassung der Branches:  
 
-Alle Branches sollten über eine Pipeline verfügen, welche Tests durchführt und Code Qualität mithilfe von SonarQube prüft. Sollte dies aus technischen Gründen nicht möglich sein entfällt diese Regel.  
+| Branch | Geschützt | Parent | Beschreibung|
+|-----------|--------|--------|-----------------------------------------------------------------------------------|
+|  Main     |  Ja    |  /     |  Stable Branch mit aktuellster Version. Beinhaltet gekürzte Commit-Historie.      |
+|  Dev      |  Ja    |  Main  |  Unstable Branch mit neusten Features.                                            |
+|  Feature  |  Nein  |  Dev   |  Branch auf dem ein neues Feature entwickelt wird.                                |
+|  Release  |  Nein  |  Dev   |  Branch auf dem eine mehrzahl von neuen Features release-fertig gemacht werden.   |
+|  Hotfix   |  Nein  |  Main  |  Branch auf welchem ein kritischer Fehler schnell behoben wird.                   |
 
-#### 2.2.2 Hauptbranch
+#### 2.2.1 Haupt-Branches
 
-Die Strategie sieht als Default-Branch den Branch `main` vor.  
-Auf den `main`-Branch darf nicht direkt gepushed werden, besonders nicht via. Force-Push.  
-Alle Code Changes auf den `main`-Branches muss via Pull Request erfolgen.  
-Pull Requests auf den `main`-Branch brauchen das Approval des Code Owners.  
-Wenn eine Pipeline für den `main`-Branch existiert, darf ein PR nur gemerged werden, wenn die PR-Pipeline fehlerfrei durchgelaufen ist.
-Der `main`-Branch soll zu jeden zeitpunkt eine stabile, produktionsreife Version des Programs beinhalten.  
-Bei einer Projekt-Versionsnummer <1.0 muss der `main`-Branch die vorherige Regeln nicht einhalten, sollte jedoch den stabilsten Zustand, der möglich ist, wiederspiegeln.  
-Mehr Informationen zur Versionierung um entsprechenden Kapitel.  
+![Hauptbranches](static/main-branches.svg)
 
-#### 2.2.3 Sekundärbranches
+Der `main`-Branch dient als Historisierung für alle Releases.  
+Mit Ausnahme vom `dev`-Branches und von `hotfix`-Branches werden keine Branches vom `main`-Branch abgeleitet.
+Jeder Commit auf den `main`-Branch zählt als neue stable-Version und wird zu einem neuen Release.  
+Deshalb besitzt der `main`-Branch nur eine gekürzte Commit-History.
+Alle Releases besitzen eine Release-Nummer. Mehr zu Release-Nummer und Versionierung in Kapitel [2.3.2](#232-versionierung).  
 
-Tatsächliche Entwicklungsarbeit muss in einem Sekundärbranch durchgeführt werden.  
-Sekundärbranches werden vom Hauptbranch oder von einem anderen Sekundärbranch abgeleitet. Dieser Brnach gilt dann als Quellbranch  
-Bevor ein Sekundärbranch gepushed wird sollte ein Merge vom oder Rebase auf den Quellbranch durchgeführt werden.  
+Der `dev`-Branch beinhaltet die komplette Commit History des Projektes und gilt aus Ausgangspunkt für die aktive Entwicklung.  
+Jeder Branch außer `main` und `hotfix` vom `dev`-Branch abgeleitet.  
 
-Ein Sekundärbranch muss einen der folgenden Namen haben:  
-
-- `dev`
-- `feature/*`
-- `bugfix/*`
-- `hotfix/*`
-- `concept/*`
-
-**Sollte ein Branch mit einem Ticket assoziiert sein, so muss ein Sekundärbranch einen der folgenden Namen haben:**  
-
-- `feature/<ticket_nr>/*`
-- `bugfix/<ticket_nr>/*`
-- `hotfix/<ticket_nr>/*`
-- `concept/<ticket_nr>/*`
-
-Ein PR auf einen Sekundärbranch dürfen nur von Branch-Owner angenommen werden.  
-Branch-Owner ist die Person, die den ältesten Commit auf dem entsprechenden Branch getätigt hat.  
-Branch-Owner bei Branches, welche mit Tickets assoziiert sind, ist die Person, die das Ticket bearbeitet.  
-Ausgenommen hierbei ist der `dev`-Branch.  
-
+Beide Branches sind schreibgeschützt und können nur via Pull Requests modifiziert werden.
 Weitere Informationen über Pull Requests in Kapitel [3.4 Pull Requests](#34-pull-requests)
+
+#### 2.2.2 Feature Branches
+
+Jedes entwickelte Feature sollte in einem eigenen Branch entwickelt werden, welcher vom `dev`-Branch abgeleitet wurde.  
+Ist die Entwicklung fertig, wird der `feature`-Branch  zurück in den `dev`-Branch gemerged.  
+`feature`-Branches dürfen niemals mit dem `main`-Branch direkt interagieren.
+
+![Feature Branches](static/feature-branches.svg)
+
+#### 2.2.3 Release Branches
+
+Wenn der `dev`-Branch genug neue Features besitzt um einen neuen release zu erstellen wird ein `release`-Branch erstellt.  
+Nach dem Erstellen eines `release`-Branches werden keine weiteren neuen Features in den `dev`-Branch hinzugefügt.  
+Nur bugfixes, Dokumentation und andere Release-Relevante Sachen können hinzugefügt werden.
+
+![Release Branches](static/release-branches.svg)
+
+Sobald ein Release fertig ist wird dieser auf `main` und `develop` gemerged und mit einer Versionsnummer getagged.  
+Nach dem mergen ist de Release-Branch zu löschen.  
+
+#### 2.2.4 Hotfix Branches
+
+`hotfix`-Branches können genutzt werden um kritische Fehler in stable-Releases schnell zu beheben.  
+Ein `hotfix`-Branch wird vom `main`-Branch abgeleitet und kann nur Änderungen behinhalten die direkt zur Fehlerbehebung benötigt werden.  
+Sobald der Fehler behoben wurde muss der `hotfix`-Branch in den `main`-, `develop`- und ggf. in den aktuellen `release`-Branch gemerged werden.  
+Nach dem mergen ist der neue `main`-Branch mit einer neuen Version zu taggen und der `hotfix`-Branch muss gelöscht werden.  
+
+![Hotfix Branches](static/hotfix-branches.svg)
 
 ### 2.3 Tags, Releases und Versionierung
 
@@ -165,7 +178,7 @@ Weitere Informationen über Pull Requests in Kapitel [3.4 Pull Requests](#34-pul
 Den Contributern ist frei überlassen ob und in welchem Abstand releases veröffentlicht werden.  
 Um ein Release zu erstellen wird ein bestimmter Commit mit einem Git Tag versehen.  
 Releases können nur vom Stand des `main`-Branches erstellt werden.  
-Sollten aus anderen Branches Releases erstellt werden, so müssen sie mit dem Postfix `-unstable` markiert werden.  
+
 
 #### 2.3.2 Versionierung
 
@@ -176,6 +189,8 @@ Inkrementiere ...
 - ... MAJOR, bei breaking changes.
 - ... MINOR, bei non-breaking changes.
 - ... PATCH, bei non-breaking bug fixes.
+
+
 
 ### 2.4 `.gitignore`-Datei
 
@@ -335,13 +350,7 @@ Nutze Verben für Non-Ressourcen.
 Eine API sollte immer eine Antwort geben, unabhängig vom Erfolg oder Qualität der Anfrage.  
 Dabei enthalten die Antworten immer einen HTTP-Status Code der die Antwort am bestmöglichen Beschreibt.  
 
-| **Code** | **Beschreibung**                                                             |
-| -------- | ---------------------------------------------------------------------------- |
-| 1XX      | Die Anfrage wurde empfangen und verstanden                                   |
-| 2XX      | Die Anfrage wurde empfangen, verstanden und war erfolgreich                  |
-| 3XX      | Der Client muss weitere Schritte tätigen um  den Request zu vervollständigen |
-| 4XX      | Die Anfrage hat einen Fehler, erzeugt welcher vom Client ausgeht.            |
-| 5XX      | Die Anfrage hat einen Fehler, erzeugt welcher vom Server ausgeht.            |
+Weitere Informationen zu den Status Codes sind hier zu finden: [MDN HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
 #### 4.2.3 API Dokumentation
 
