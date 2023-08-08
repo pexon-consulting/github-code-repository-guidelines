@@ -43,7 +43,9 @@
       - [4.2.1 API Anfragen](#421-api-anfragen)
       - [4.2.2 API Antworten](#422-api-antworten)
       - [4.2.3 API Dokumentation](#423-api-dokumentation)
-  - [5 Quellen](#5-quellen)
+      - [4.2.4 API Security](#424-api-security)
+  - [5 Logging](#5-logging)
+  - [6 Quellen](#6-quellen)
 
 <!--TOC-->
 
@@ -403,7 +405,28 @@ Generell sollte jeder API-Endpunk die folgende Dokumentation besitzen:
 - Eine erfolgreiche Antwort sollte beispielhaft angefügt sein.
 - Potentielle Fehlernachrichten sollten angefügt sein.
 
-## 5 Quellen
+#### 4.2.4 API Security
+
+Arbeite die folgende Checklist so gut wie möglich hab beim entwickeln einer Public oder Private Web-API: [API Security Checklist](https://github.com/shieldfy/API-Security-Checklist)
+
+## 5 Logging
+
+Verwende Logging um einen Einblick in das Programm zur Laufzeit zu ermöglichen.  
+Nutze hierbei eine Standardlösung für die verwendete Programmiersprache oder Framework und erfinde das Logging-Rad nicht neu.  
+Achte dabei auf die korrekte Verwendung von Log-Levels.
+Die wichtigsten Log Level sind in folgendem Dokument beschrieben: [How to coose levels of logging](https://sematext.com/blog/logging-levels/).  
+Hier die häufigsten Log Level im Überblick:
+
+|Level| Beschreibung|
+|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fatal |   Kritischer Fehler, welche die Anwendung davon abhält weiter zu laufen.                                                                                  |
+| Error |   Ernster Fehler welcher eine und mehrere Funktionen der Anwendung beeinträchtigt.                                                                        |
+| Warn  |   Unerwartetes Verhalten in der Anwendung, welches aber den normalen Betrieb nicht beeinträchtigt.                                                        |
+| Info  |   Eine Reguläre Nachricht, weder positiv noch negativ. Sollte einen allgemeinen Einblick in den Normalbetrieb der Anwendung bieten.                       |
+| Debug |   Sollte Details für das Debugging ausgeben, jedoch nicht so granular wie Trace sein.                                                                     |
+| Trace |   Schritt für Schritt Instruktionen werden gelogged. Genaustes Level welches sehr viel Log-Nachrichten produziert. So häufig wie möglich implementieren.  |
+
+## 6 Quellen
 
 - [elsewhencode/project-guidelines](https://github.com/elsewhencode/project-guidelines)
 - [Kristories/awesome-guidelines](https://github.com/Kristories/awesome-guidelines)
