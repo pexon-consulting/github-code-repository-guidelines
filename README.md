@@ -22,7 +22,7 @@
       - [2.2.1 Haupt-Branches](#221-haupt-branches)
       - [2.2.2 Feature Branches](#222-feature-branches)
       - [2.2.3 Release Branches](#223-release-branches)
-      - [2.2.4 Hotfix Branches](#224-hotfix-branches)
+      - [2.2.4 Hotfix und Bugfix Branches](#224-hotfix-und-bugfix-branches)
     - [2.3 Releases und Versionierung](#23-releases-und-versionierung)
       - [2.3.1 Releases](#231-releases)
       - [2.3.2 Versionierung](#232-versionierung)
@@ -166,7 +166,7 @@ Nur bugfixes, Dokumentation und andere Release-Relevante Sachen können hinzugef
 Sobald ein Release fertig ist wird dieser auf `main` und `develop` gemerged und mit einer Versionsnummer getagged.  
 Nach dem mergen ist de Release-Branch zu löschen.  
 
-#### 2.2.4 Hotfix Branches
+#### 2.2.4 Hotfix und Bugfix Branches
 
 `hotfix`-Branches können genutzt werden um kritische Fehler in stable-Releases schnell zu beheben.  
 Ein `hotfix`-Branch wird vom `main`-Branch abgeleitet und kann nur Änderungen behinhalten die direkt zur Fehlerbehebung benötigt werden.  
@@ -174,6 +174,11 @@ Sobald der Fehler behoben wurde muss der `hotfix`-Branch in den `main`-, `develo
 Nach dem mergen ist der neue `main`-Branch mit einer neuen Version zu taggen und der `hotfix`-Branch muss gelöscht werden.  
 
 ![Hotfix Branches](static/hotfix-branches.svg)
+
+Ein `bugfix`-Branch hingegen wird genutzt um Fehler in Releasekandidaten zu beheben.  
+Sie werden entsprechend von einem `release`-Branch abgeleitet und beinhalten nur Codeänderungen, welche direkr zur Fehlerbehebung benötigt werden.  
+Sobald der Fehler behoben wurde muss der `bugfix`-Branch in den `release`-Branch gemerged werden.  
+Nach dem mergen ist der `bugfix`-Branch zu löschen.
 
 ### 2.3 Releases und Versionierung
 
