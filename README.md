@@ -50,7 +50,7 @@
 ## 1 Einführung
 
 Alle Pexonians sind herzlich eingeladen, interessante Open-Source Projekte zu gestalten und diese in unserer GitHub Organisation zu veröffentlichen.
-Pexon strebt danach, fesselnde Technologien zu kreieren, einzusetzen und zu fördern.
+Pexon strebt danach, neue Technologien zu kreieren, einzusetzen und zu fördern.
 
 Die Pexon Consulting GmbH spezialisiert sich auf die IT Beratung & Entwicklung für die Bereiche Cloud, DevOps und Data.
 Wir sind in ganz Deutschland vertreten – mit Standorten in Frankfurt, Eschborn, München, Berlin, Magdeburg und Hamburg.
@@ -59,7 +59,7 @@ Dafür wollen wir der Entwickler-Community unsere Tools und Projekte bereitstell
 
 Dieses Dokument fungiert als Richtlinie für unsere Code-Qualität und die Struktur unserer Repositories.
 Es soll die Zusammenarbeit während der Entwicklung erleichtern und die Veröffentlichung der Projekte auf einen einheitlichen Standard bringen.
-Projekte können eigenständige Programme, Frameworks, Libraries, Plugins, Extentions, Dokumente und vieles weiteres sein.
+Projekte können eigenständige Programme, Frameworks, Libraries, Plugins, Extensions, Dokumente und vieles weiteres sein.
 Im folgenden werden diese, zur Vereinfachung, unter dem Begriff "Projekt" zusammengefasst.
 
 ## 2 Git Repository
@@ -73,6 +73,9 @@ Trotzdem sollte sie genügend Wissen vermitteln, um die meisten Fragen der Entwi
 ***Folgende Punkte müssen in der Readme Datei zu finden sein:***
 
 ### Projekt Name
+Praktisch das Gesicht des Projektes.  
+Ein Projektname sollte immer in Verbindung stehen, zu dem, was was angeboten oder welches Problem gelöst wird.  
+Zudem sollte er einfach zu merken und leicht auszusprechen sein.  
 
 #### Projektbescheibung
 
@@ -122,14 +125,14 @@ Det Gitflow Workflow sieht zwei Branches vor, welche die Projekt-Historie dokume
 
 Zusammenfassung der Branches:  
 
-| Branch | Geschützt | Parent   | Beschreibung                                                                                                        |
-|-----------|--------|----------|---------------------------------------------------------------------------------------------------------------------|
-|  Main     |  Ja    |  /       |  Stable Branch mit aktuellster Version, "was gerade in Produktion läuft". Beinhaltet gekürzte Commit-Historie.      |
-|  Dev      |  Ja    |  Main    |  Unstable Branch mit neusten Features.                                                                              |
-|  Feature  |  Nein  |  Dev     |  Branch auf dem ein neues Feature entwickelt wird.                                                                  |
-|  Release  |  Nein  |  Dev     |  Branch auf dem eine mehrzahl von neuen Features release-fertig gemacht werden.                                     |
-|  bugfix   |  Nein  | release  |  Sollten Bugs in Release Branches auftreten sind sie mit Hilfe eines Bugfix Branches zu fixen                       |
-|  Hotfix   |  Nein  |  Main    |  Branch auf welchem ein kritischer Fehler schnell behoben wird.                                                     |
+|   Branch  |         Name       | Geschützt | Parent   |                                           Beschreibung                                                              |
+|-----------|--------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------|
+|  Main     |  `main`            |  Ja       |  /       |  Stable Branch mit aktuellster Version, "was gerade in Produktion läuft". Beinhaltet gekürzte Commit-Historie.      |
+|  Dev      |  `dev`             |  Ja       |  Main    |  Unstable Branch mit neusten Features.                                                                              |
+|  Feature  |  `feature/*`       |  Nein     |  Dev     |  Branch auf dem ein neues Feature entwickelt wird.                                                                  |
+|  Release  |  `release-vX.Y.Z`  |  Nein     |  Dev     |  Branch auf dem eine mehrzahl von neuen Features release-fertig gemacht werden.                                     |
+|  Bugfix   |  `bugfix/*`        |  Nein     | release  |  Sollten Bugs in Release Branches auftreten sind sie mit Hilfe eines Bugfix Branches zu fixen                       |
+|  Hotfix   |  `hotfix/*`        |  Nein     |  Main    |  Branch auf welchem ein kritischer Fehler schnell behoben wird.                                                     |
 
 #### 2.2.1 Haupt-Branches
 
