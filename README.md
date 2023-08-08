@@ -11,8 +11,8 @@
   - [1 Einführung](#1-einführung)
   - [2 Git Repository](#2-git-repository)
     - [2.1 Readme Datei](#21-readme-datei)
-    - [Projekt Name](#projekt-name)
-      - [Projektbescheibung](#projektbescheibung)
+    - [Projektname](#projektname)
+      - [Projektbeschreibung](#projektbeschreibung)
       - [Badges](#badges)
       - [Quickstart-Guide](#quickstart-guide)
       - [Link zu weiteren Ressourcen](#link-zu-weiteren-ressourcen)
@@ -72,19 +72,20 @@ Trotzdem sollte sie genügend Wissen vermitteln, um die meisten Fragen der Entwi
 
 ***Folgende Punkte müssen in der Readme Datei zu finden sein:***
 
-### Projekt Name
+### Projektname
+
 Praktisch das Gesicht des Projektes.  
 Ein Projektname sollte immer in Verbindung stehen, zu dem, was was angeboten oder welches Problem gelöst wird.  
 Zudem sollte er einfach zu merken und leicht auszusprechen sein.  
 
-#### Projektbescheibung
+#### Projektbeschreibung
 
 Am Anfang der Readme-Datei befindet sich eine knappe Zusammenfassung, die als "Executive Summary" für das Projekt und das Repository fungiert.
 In nur wenigen Sätzen soll der Leser einen groben Überblick darüber erhalten, worum es bei dem Projekt geht und welche Inhalte in diesem Repository zu finden sind.
 
 #### Badges
 
-An zweiter Stelle sollten Projekt-Badges ("Shields") zu finden sein.
+An nächster Stelle sollten Projekt-Badges ("Shields") zu finden sein.
 Dieses Badges geben einen Überblick über verschiedene Attribute des Repositories geben.
 Zu diesen Badges gehören unter anderem:
 
@@ -97,12 +98,11 @@ Shields können über den Folgen Links generiert werden: [shields.io](https://sh
 
 #### Quickstart-Guide
 
-Der Quickstart-Guide stellt eines der zentralen Elemente innerhalb der Readme-Datei dar.
-Er umreißt die Schritte, die ein Nutzer befolgen muss, um das Projekt usw. nutzen zu können.
-Bei der Erstellung des Quickstart-Guides ist es von besonderer Bedeutung, die Perspektive des Nutzers einzunehmen.
-Das bedeutet, der Verfasser des Leitfadens sollte sich in die Lage einer Person versetzen, die noch keinerlei Interaktion mit dem Code hatte und bei Null beginnt.
-Folglich müssen klare Informationen bereitgestellt werden, wie das Projekt genutzt werden kann, welche Vorbedingungen erfüllt sein müssen, ob spezifische Konfigurationen angepasst werden müssen und so weiter.
-Idealerweise mündet der Leitfaden in einem "Hello World!"-Beispiel. Das bedeutet, er sollte so weit gehen, bis der Nutzer das Projekt usw. gestartet hat und ein einfaches Ergebnis sieht.
+Der Quickstart-Guide beschreibt die Schritte, die ein Nutzer befolgen muss, um einen ersten, schnellen Einblick in die Grundfunktionalität des Projektes zu bekommen.  
+Bei der Erstellung des Quickstart-Guides ist es besonders wichtig die Schritte aus Sicht eines neuen Benutzers zu formulieren.  
+Das bedeutet, der Verfasser des Leitfadens sollte sich in die Lage einer Person versetzen, die noch keinerlei Interaktion mit dem Code hatte und bei Null beginnt.  
+Folglich müssen klare Informationen geschildert werden, wie das Projekt genutzt werden kann, welche Vorbedingungen erfüllt sein müssen, ob spezifische Konfigurationen angepasst werden müssen und so weiter.  
+Idealerweise ended der Leitfaden in einem "Hello World!"-Beispiel.
 
 #### Link zu weiteren Ressourcen
 
@@ -120,13 +120,13 @@ Hier einen Verweis mit dem Nutzer and Hilfe kommen können, wenn sie diese benö
 
 ### 2.2 Git Branching-Strategie
 
-Repositories folgen dem [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).  
+Repositories folgen der [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) Strategie.  
 Det Gitflow Workflow sieht zwei Branches vor, welche die Projekt-Historie dokumentieren, den `main`-Branch und den `develop`-Branch (kurz `dev`), und weiteren Nebenbranches, welche von einem der beiden Hauptbranches abgeleitet werden und verschiedenen Nutzen haben.
 
 Zusammenfassung der Branches:  
 
-|   Branch  |         Name       | Geschützt | Parent   |                                           Beschreibung                                                              |
-|-----------|--------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------|
+| Branch    |  Name              | Geschützt | Parent   | Beschreibung                                                                                                        |
+|-----------|--------------------|-----------|----------|---------------------------------------------------------------------------------------------------------------------|
 |  Main     |  `main`            |  Ja       |  /       |  Stable Branch mit aktuellster Version, "was gerade in Produktion läuft". Beinhaltet gekürzte Commit-Historie.      |
 |  Dev      |  `dev`             |  Ja       |  Main    |  Unstable Branch mit neusten Features.                                                                              |
 |  Feature  |  `feature/*`       |  Nein     |  Dev     |  Branch auf dem ein neues Feature entwickelt wird.                                                                  |
@@ -139,20 +139,20 @@ Zusammenfassung der Branches:
 ![Hauptbranches](static/main-branches.svg)
 
 Der `main`-Branch dient als Historisierung für alle Releases.  
-Mit Ausnahme vom `dev`-Branches und von `hotfix`-Branches werden keine Branches vom `main`-Branch abgeleitet.
-Jeder Commit auf den `main`-Branch zählt als neue stable-Version und wird zu einem neuen Release.  
-Deshalb besitzt der `main`-Branch nur eine gekürzte Commit-History.
+Mit Ausnahme vom `dev`-Branch und von `hotfix`-Branches werden keine Branches vom `main`-Branch abgeleitet.  
+Jeder Commit auf den `main`-Branch zählt als neue stable-Version.
+Deshalb besitzt der `main`-Branch nur eine gekürzte Commit-History.  
 Alle Releases besitzen eine Release-Nummer. Mehr zu Release-Nummer und Versionierung in Kapitel [2.3.2](#232-versionierung).  
 
-Der `dev`-Branch beinhaltet die komplette Commit History des Projektes und gilt aus Ausgangspunkt für die aktive Entwicklung.  
-Jeder Branch außer `main` und `hotfix` vom `dev`-Branch abgeleitet.  
+Der `dev`-Branch beinhaltet die komplette Commit-History des Projektes und zählt als Ausgangspunkt für die aktive Entwicklung.  
+Jeder Branch außer `main` und `hotfix` wird vom `dev`-Branch abgeleitet.  
 
 Beide Branches sind schreibgeschützt und können nur via Pull Requests modifiziert werden.
 Weitere Informationen über Pull Requests in Kapitel [3.4 Pull Requests](#34-pull-requests)
 
 #### 2.2.2 Feature Branches
 
-Jedes entwickelte Feature sollte in einem eigenen Branch entwickelt werden, welcher vom `dev`-Branch abgeleitet wurde.  
+Jedes entwickelte Feature muss in einem eigenen Branch entwickelt werden, welcher vom `dev`-Branch abgeleitet wurde.  
 Ist die Entwicklung fertig, wird der `feature`-Branch  zurück in den `dev`-Branch gemerged.  
 `feature`-Branches dürfen niemals mit dem `main`-Branch direkt interagieren.
 
@@ -160,9 +160,9 @@ Ist die Entwicklung fertig, wird der `feature`-Branch  zurück in den `dev`-Bran
 
 #### 2.2.3 Release Branches
 
-Wenn der `dev`-Branch genug neue Features besitzt um einen neuen release zu erstellen wird ein `release`-Branch erstellt.  
+Wenn der `dev`-Branch genug neue Features besitzt, um einen neuen Release zu erstellen, wird ein `release`-Branch erstellt.  
 Nach dem Erstellen eines `release`-Branches werden keine weiteren neuen Features in den `dev`-Branch hinzugefügt.  
-Nur bugfixes, Dokumentation und andere Release-Relevante Sachen können hinzugefügt werden.
+Nur Bugfixes, Dokumentation und andere Release-Relevante Änderungen sind erlaubt.
 
 ![Release Branches](static/release-branches.svg)
 
@@ -197,23 +197,23 @@ Ein Release-Workflow funktioniert wie folgt:
 1. Merge `main` in `dev` um sicherzustellen das der `dev` den produktiven Code besitzt. Dies kann Merge-Konflikte vorbeugen, wenn etwa ein Hotfix nur auf `main` und nicht auf `dev` gemerged wurde.  
 
 ```text
-git checkout dev
-git merge master
+$ git checkout dev
+$ git merge master
 ```
 
 2. Erstelle einen neuen `release`-Branch von Develop
 
 ````text
-git checkout -b release-vX.Y.Z
-git push --set-upstream origin release-vX.Y.Z
+$ git checkout -b release-vX.Y.Z
+$ git push --set-upstream origin release-vX.Y.Z
 ````
 
 3. Falls nötig, behebe bugs im `release`-Branch
 
 ````text
 $ git checkout release-vX.Y.Z
-$ git checkout -b hotfix/<name>
-$ git push --set-upstream hotfix/<name>
+$ git checkout -b bugfix/<name>
+$ git push --set-upstream bugfix/<name>
 <Behebe Fehler>
 $ git commit -m "<commit nachricht>"
 $ git push
@@ -234,7 +234,7 @@ $ git push
 #### 2.3.2 Versionierung
 
 Stabile Releases (Releases vom `main`-Branch) folgen der standard [Semver](https://semver.org/)-Konvention `MAJOR.MINOR.PATCH`
-Dabei stehen `MAJOR`, `MINOR` und `PATCH` für positive Ganzzahlen und dürfen keine vorstehende "0" haben.
+Dabei stehen `MAJOR`, `MINOR` und `PATCH` für positive Ganzzahlen und dürfen keine führende "0" haben.
 Inkrementiere ...
 
 - ... MAJOR, bei breaking changes.
@@ -243,18 +243,14 @@ Inkrementiere ...
 
 ### 2.4 `.gitignore`-Datei
 
-Eine .gitignore-Datei ist eine Konfigurationsdatei in einem Git-Repository, die angibt, welche Dateien und Verzeichnisse von Git ignoriert werden sollen.  
-Wenn eine Änderungen an deinem Code oder deinem Projekt vorgenommen wird und diese in einem Git-Repository verfolgst, gibt es oft Dateien oder Verzeichnisse, die automatisch generiert werden oder temporäre Daten enthalten, die nicht im Repository gespeichert werden sollen.  
-Diese könnten beispielsweise Kompilierungsresultate, temporäre Dateien, Logdateien, Konfigurationsdateien mit vertraulichen Informationen oder andere lokale Konfigurationen sein.  
+Eine `.gitignore`-Datei ist eine Konfigurationsdatei in einem Git-Repository, die angibt, welche Dateien und Verzeichnisse von Git ignoriert werden sollen.  
+Wenn eine Änderungen am Code oder Projekt vorgenommen wird und diese in einem Git-Repository verfolgst, gibt es oft Dateien oder Verzeichnisse, die automatisch generiert werden oder temporäre Daten enthalten, die nicht im Repository gespeichert werden sollen.  
+Diese könnten beispielsweise Compile-Ergebnisse, temporäre Dateien, Logdateien, Keys/Secrets oder andere lokale Konfigurationen sein.  
 
-Die .gitignore-Datei ermöglicht es, diese Dateien und Verzeichnisse zu spezifizieren, sodass Git sie beim Commit und der Versionsverwaltung ignoriert.  
-Dadurch wird verhindert, dass unnötige oder sensible Daten im Repository gespeichert werden.  
-Die .gitignore-Datei enthält Muster und Pfade zu den Dateien und Verzeichnissen, die ausgeschlossen werden sollen.
+Die `.gitignore`-Datei ermöglicht es, diese Dateien und Verzeichnisse zu spezifizieren, sodass Git sie beim Commit und der Versionsverwaltung ignoriert.  
+Die `.gitignore`-Datei enthält Muster und Pfade zu den Dateien und Verzeichnissen, die ausgeschlossen werden sollen.
 
-Die Syntax der .gitignore-Datei ermöglicht die Verwendung von Wildcards und regulären Ausdrücken, um verschiedene Dateitypen oder Muster von Dateinamen zu erfassen.
-Sie ist somit ein nützliches Werkzeug, um dein Repository sauber zu halten und sicherzustellen, dass nur die relevanten Dateien und Verzeichnisse im Versionskontrollsystem verfolgt werden.
-
-Ein Projekt sollte immer eine `.gitignore`-Datei besitzen, die auf das Projekt angepasst ist.
+Die Syntax der `.gitignore`-Datei ermöglicht die Verwendung von Wildcards und regulären Ausdrücken, um verschiedene Dateitypen oder Muster von Dateinamen zu erfassen.  
 Ein Template kann sich mit Github beim Erstellen eines leeren Repositories automatisch generieren lassen.
 Alternativ biete [diese](https://github.com/pexon-consulting/github-code-repository-guidelines/blob/main/.gitignore) `.gitignore`-Datei einen guten Startpunk.
 
@@ -262,7 +258,7 @@ Alternativ biete [diese](https://github.com/pexon-consulting/github-code-reposit
 
 #### 2.5.1 Issues
 
-Bugs und Features müssen über Github Issues vorgeschlagen werden.
+Bugfixes und Features von externen Contributern müssen über Github-Issues vorgeschlagen werden.
 Sollte ein Issue für mehr als 90 Tage keine neues update bekommen gibt es als Inaktiv und muss geschlossen werden.
 Dafür lassen sich automatisch Github Actions erstellen.
 Ein respektvoller und sachlicher Umgang miteinander innerhalb der Issue-Diskusion ist hierbei selbstverständlich Pflicht.
@@ -296,13 +292,13 @@ Dieser Abschnitt listet das Regelwerk auf, welches von jedem Entwickler eines Pr
 
 Hier eine Referenz zu den Best Practices verschiedener Sprachen:
 
-**Java**: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
-**Python**: [PEP 8 Style Guide](https://peps.python.org/pep-0008/), [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html), [The Hitchhiker's Guide to Python](https://docs.python-guide.org/)
-**JavaScript**: [JavaScript: The Right Way](http://jstherightway.org/), [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html), [W3C Javascript Best Practices](https://www.w3.org/wiki/JavaScript_best_practices)
-**TypeScript**: [AWS Follow TypeScript best practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-cdk-typescript-iac/typescript-best-practices.html), [Typescript Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)
-**HTML**: [HTML Style Guide](https://www.w3schools.com/html/html5_syntax.asp)
-**CSS**: [Organizing your CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing)
-**GoLang**: [Effective Go](https://go.dev/doc/effective_go), [GoLang best Practices](https://golangdocs.com/golang-best-practices)
+**Java**: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)  
+**Python**: [PEP 8 Style Guide](https://peps.python.org/pep-0008/), [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html), [The Hitchhiker's Guide to Python](https://docs.python-guide.org/)  
+**JavaScript**: [JavaScript: The Right Way](http://jstherightway.org/), [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html), [W3C Javascript Best Practices](https://www.w3.org/wiki/JavaScript_best_practices)  
+**TypeScript**: [AWS Follow TypeScript best practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-cdk-typescript-iac/typescript-best-practices.html), [Typescript Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)  
+**HTML**: [HTML Style Guide](https://www.w3schools.com/html/html5_syntax.asp)  
+**CSS**: [Organizing your CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing)  
+**GoLang**: [Effective Go](https://go.dev/doc/effective_go), [GoLang best Practices](https://golangdocs.com/golang-best-practices)  
 
 Weitere Guides zu diesen und weiteren Sprachen, Frameworks und Tools sind zu finden im folgenden Repository: [Awesome Guidelines](https://github.com/Kristories/awesome-guidelines)
 
@@ -326,7 +322,8 @@ Um eine saubere Commit History zu gewährleisten dürfen Changes von anderen Bra
 Dem Branch-Owner ist überlassen welche der beiden genutzt wird.
 Weitere Informationen: Siehe [Merging vs. Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 
-Beim Merge auf den `main`-Branch via PR müssen die Commits auf dem eingehenden Branch mit dem `git squash`-Befehl oder per IDE komprimiert werden.
+Beim Merge auf den `main`-Branch via PR müssen die Commits auf dem eingehenden Branch mit dem `git squash`-Befehl oder per IDE komprimiert werden.  
+GitHub kann bei einem PR-Merge alle Commits automatisch squashen wenn diese Option gewählt wurde.  
 Weitere Informationen: Siehe [Git Squash Commits](https://www.baeldung.com/ops/git-squash-commits)
 
 ### 3.4 Pull Requests
@@ -379,13 +376,13 @@ Der Request- und Response-Body sollte der standard JSON-Konvention entsprechen.
 Vermeide Verben für URL Pfade die Ressourcen ansprechen, nutze stattdessen Nomen.
 Nutze Verben für Non-Ressourcen.
 
-| **VERB** | **Beschreibung**                                          |
-| -------- | --------------------------------------------------------- |
-| GET      | Genutzt um eine einzelne Resource abzurufen               |
-| POST     | Genutzt um eine neue Resource oder Sub-Resource anzulegen |
-| PUT      | Genutzt um eine existierende Resource zu updaten          |
-| PATCH    | Genutzt um eine existierende Resource zu updaten          |
-| DELETE   | Genutzt um eine existierende Resource zu löschen          |
+| **VERB** | **Beschreibung**                                              |
+| -------- | --------------------------------------------------------------|
+| GET      | Genutzt um eine einzelne Resource abzurufen.                  |
+| POST     | Genutzt um eine neue Resource oder Sub-Resource anzulegen.    |
+| PUT      | Genutzt um eine existierende Resource zu überschreiben.       |
+| PATCH    | Genutzt um teile einer existierenden Resource zu updaten.     |
+| DELETE   | Genutzt um eine existierende Resource zu löschen.             |
 
 #### 4.2.2 API Antworten
 
