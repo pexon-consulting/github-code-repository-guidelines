@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/PRs-Welcome-green) ![Static Badge](https://img.shields.io/badge/version-0.1.0-blue)
+![Static Badge](https://img.shields.io/badge/PRs-Welcome-green) ![Static Badge](https://img.shields.io/badge/version-0.2.0-blue)
 
 # Pexon Consulting GmbH - Contribution Guidelines
 
