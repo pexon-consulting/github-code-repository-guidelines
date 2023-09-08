@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/PRs-Welcome-green) ![Static Badge](https://img.shields.io/badge/version-0.1.0-blue)
+![Static Badge](https://img.shields.io/badge/PRs-Welcome-green) ![Static Badge](https://img.shields.io/badge/version-0.2.0-blue)
 
 # Pexon Consulting GmbH - Contribution Guidelines
 
@@ -11,26 +11,27 @@
   - [1 Einführung](#1-einführung)
   - [2 Git Repository](#2-git-repository)
     - [2.1 Readme Datei](#21-readme-datei)
-    - [Projekt Name](#projekt-name)
-      - [Projektbescheibung](#projektbescheibung)
+    - [Projektname](#projektname)
+      - [Projektbeschreibung](#projektbeschreibung)
       - [Badges](#badges)
       - [Quickstart-Guide](#quickstart-guide)
       - [Link zu weiteren Ressourcen](#link-zu-weiteren-ressourcen)
       - [Acknowledgements](#acknowledgements)
       - [Kontaktdaten](#kontaktdaten)
     - [2.2 Git Branching-Strategie](#22-git-branching-strategie)
-      - [2.2.1 Allgemeine Regeln](#221-allgemeine-regeln)
-      - [2.2.2 Hauptbranch](#222-hauptbranch)
-      - [2.2.3 Sekundärbranches](#223-sekundärbranches)
-    - [2.3 Tags, Releases und Versionierung](#23-tags-releases-und-versionierung)
-      - [2.3.1 Tags und Releases](#231-tags-und-releases)
+      - [2.2.1 Haupt-Branches](#221-haupt-branches)
+      - [2.2.2 Feature Branches](#222-feature-branches)
+      - [2.2.3 Release Branches](#223-release-branches)
+      - [2.2.4 Hotfix und Bugfix Branches](#224-hotfix-und-bugfix-branches)
+    - [2.3 Releases und Versionierung](#23-releases-und-versionierung)
+      - [2.3.1 Releases](#231-releases)
       - [2.3.2 Versionierung](#232-versionierung)
     - [2.4 `.gitignore`-Datei](#24-gitignore-datei)
     - [2.5 Issues und Issue-Templates](#25-issues-und-issue-templates)
       - [2.5.1 Issues](#251-issues)
       - [2.5.2 Templates](#252-templates)
   - [3 Source Code und Code Commits](#3-source-code-und-code-commits)
-    - [3.1 Source Code Quality & Style](#31-source-code-quality--style)
+    - [3.1 Source Code Quality \& Style](#31-source-code-quality--style)
     - [3.2 Code Commits](#32-code-commits)
     - [3.3 Merges und Rebases](#33-merges-und-rebases)
     - [3.4 Pull Requests](#34-pull-requests)
@@ -42,14 +43,16 @@
       - [4.2.1 API Anfragen](#421-api-anfragen)
       - [4.2.2 API Antworten](#422-api-antworten)
       - [4.2.3 API Dokumentation](#423-api-dokumentation)
-  - [5 Quellen](#5-quellen)
+      - [4.2.4 API Security](#424-api-security)
+  - [5 Logging](#5-logging)
+  - [6 Quellen](#6-quellen)
 
 <!--TOC-->
 
 ## 1 Einführung
 
 Alle Pexonians sind herzlich eingeladen, interessante Open-Source Projekte zu gestalten und diese in unserer GitHub Organisation zu veröffentlichen.
-Pexon strebt danach, fesselnde Technologien zu kreieren, einzusetzen und zu fördern.
+Pexon strebt danach, neue Technologien zu kreieren, einzusetzen und zu fördern.
 
 Die Pexon Consulting GmbH spezialisiert sich auf die IT Beratung & Entwicklung für die Bereiche Cloud, DevOps und Data.
 Wir sind in ganz Deutschland vertreten – mit Standorten in Frankfurt, Eschborn, München, Berlin, Magdeburg und Hamburg.
@@ -58,7 +61,7 @@ Dafür wollen wir der Entwickler-Community unsere Tools und Projekte bereitstell
 
 Dieses Dokument fungiert als Richtlinie für unsere Code-Qualität und die Struktur unserer Repositories.
 Es soll die Zusammenarbeit während der Entwicklung erleichtern und die Veröffentlichung der Projekte auf einen einheitlichen Standard bringen.
-Projekte können eigenständige Programme, Frameworks, Libraries, Plugins, Extentions, Dokumente und vieles weiteres sein.
+Projekte können eigenständige Programme, Frameworks, Libraries, Plugins, Extensions, Dokumente und vieles weiteres sein.
 Im folgenden werden diese, zur Vereinfachung, unter dem Begriff "Projekt" zusammengefasst.
 
 ## 2 Git Repository
@@ -71,16 +74,20 @@ Trotzdem sollte sie genügend Wissen vermitteln, um die meisten Fragen der Entwi
 
 ***Folgende Punkte müssen in der Readme Datei zu finden sein:***
 
-### Projekt Name
+### Projektname
 
-#### Projektbescheibung
+Praktisch das Gesicht des Projektes.  
+Ein Projektname sollte immer in Verbindung stehen, zu dem, was was angeboten oder welches Problem gelöst wird.  
+Zudem sollte er einfach zu merken und leicht auszusprechen sein.  
+
+#### Projektbeschreibung
 
 Am Anfang der Readme-Datei befindet sich eine knappe Zusammenfassung, die als "Executive Summary" für das Projekt und das Repository fungiert.
 In nur wenigen Sätzen soll der Leser einen groben Überblick darüber erhalten, worum es bei dem Projekt geht und welche Inhalte in diesem Repository zu finden sind.
 
 #### Badges
 
-An zweiter Stelle sollten Projekt-Badges ("Shields") zu finden sein.
+An nächster Stelle sollten Projekt-Badges ("Shields") zu finden sein.
 Dieses Badges geben einen Überblick über verschiedene Attribute des Repositories geben.
 Zu diesen Badges gehören unter anderem:
 
@@ -93,12 +100,11 @@ Shields können über den Folgen Links generiert werden: [shields.io](https://sh
 
 #### Quickstart-Guide
 
-Der Quickstart-Guide stellt eines der zentralen Elemente innerhalb der Readme-Datei dar.
-Er umreißt die Schritte, die ein Nutzer befolgen muss, um das Projekt usw. nutzen zu können.
-Bei der Erstellung des Quickstart-Guides ist es von besonderer Bedeutung, die Perspektive des Nutzers einzunehmen.
-Das bedeutet, der Verfasser des Leitfadens sollte sich in die Lage einer Person versetzen, die noch keinerlei Interaktion mit dem Code hatte und bei Null beginnt.
-Folglich müssen klare Informationen bereitgestellt werden, wie das Projekt genutzt werden kann, welche Vorbedingungen erfüllt sein müssen, ob spezifische Konfigurationen angepasst werden müssen und so weiter.
-Idealerweise mündet der Leitfaden in einem "Hello World!"-Beispiel. Das bedeutet, er sollte so weit gehen, bis der Nutzer das Projekt usw. gestartet hat und ein einfaches Ergebnis sieht.
+Der Quickstart-Guide beschreibt die Schritte, die ein Nutzer befolgen muss, um einen ersten, schnellen Einblick in die Grundfunktionalität des Projektes zu bekommen.  
+Bei der Erstellung des Quickstart-Guides ist es besonders wichtig die Schritte aus Sicht eines neuen Benutzers zu formulieren.  
+Das bedeutet, der Verfasser des Leitfadens sollte sich in die Lage einer Person versetzen, die noch keinerlei Interaktion mit dem Code hatte und bei Null beginnt.  
+Folglich müssen klare Informationen geschildert werden, wie das Projekt genutzt werden kann, welche Vorbedingungen erfüllt sein müssen, ob spezifische Konfigurationen angepasst werden müssen und so weiter.  
+Idealerweise ended der Leitfaden in einem "Hello World!"-Beispiel.
 
 #### Link zu weiteren Ressourcen
 
@@ -116,64 +122,121 @@ Hier einen Verweis mit dem Nutzer and Hilfe kommen können, wenn sie diese benö
 
 ### 2.2 Git Branching-Strategie
 
-Jedes Repository folgt der gleichen Branching-Strategie.
+Repositories folgen der [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) Strategie.  
+Det Gitflow Workflow sieht zwei Branches vor, welche die Projekt-Historie dokumentieren, den `main`-Branch und den `develop`-Branch (kurz `dev`), und weiteren Nebenbranches, welche von einem der beiden Hauptbranches abgeleitet werden und verschiedenen Nutzen haben.
 
-#### 2.2.1 Allgemeine Regeln
+Zusammenfassung der Branches:  
 
-Alle Branches sollten über eine Pipeline verfügen, welche Tests durchführt und Code Qualität mithilfe von SonarQube prüft. Sollte dies aus technischen Gründen nicht möglich sein entfällt diese Regel.
+| Branch    |  Name              | Geschützt | Parent   | Beschreibung                                                                                                        |
+|-----------|--------------------|-----------|----------|---------------------------------------------------------------------------------------------------------------------|
+|  Main     |  `main`            |  Ja       |  /       |  Stable Branch mit aktuellster Version, "was gerade in Produktion läuft". Beinhaltet gekürzte Commit-Historie.      |
+|  Dev      |  `dev`             |  Ja       |  Main    |  Unstable Branch mit neusten Features.                                                                              |
+|  Feature  |  `feature/*`       |  Nein     |  Dev     |  Branch auf dem ein neues Feature entwickelt wird.                                                                  |
+|  Release  |  `release-vX.Y.Z`  |  Nein     |  Dev     |  Branch auf dem eine mehrzahl von neuen Features release-fertig gemacht werden.                                     |
+|  Bugfix   |  `bugfix/*`        |  Nein     | release  |  Sollten Bugs in Release Branches auftreten sind sie mit Hilfe eines Bugfix Branches zu fixen                       |
+|  Hotfix   |  `hotfix/*`        |  Nein     |  Main    |  Branch auf welchem ein kritischer Fehler schnell behoben wird.                                                     |
 
-#### 2.2.2 Hauptbranch
+#### 2.2.1 Haupt-Branches
 
-Die Strategie sieht als Default-Branch den Branch `main` vor.
-Auf den `main`-Branch darf nicht direkt gepushed werden, besonders nicht via. Force-Push.
-Alle Code Changes auf den `main`-Branches muss via Pull Request erfolgen.
-Pull Requests auf den `main`-Branch brauchen das Approval des Code Owners.
-Wenn eine Pipeline für den `main`-Branch existiert, darf ein PR nur gemerged werden, wenn die PR-Pipeline fehlerfrei durchgelaufen ist.
-Der `main`-Branch soll zu jeden zeitpunkt eine stabile, produktionsreife Version des Programs beinhalten.
-Bei einer Projekt-Versionsnummer <1.0 muss der `main`-Branch die vorherige Regeln nicht einhalten, sollte jedoch den stabilsten Zustand, der möglich ist, wiederspiegeln.
-Mehr Informationen zur Versionierung um entsprechenden Kapitel.
+![Hauptbranches](static/main-branches.svg)
 
-#### 2.2.3 Sekundärbranches
+Der `main`-Branch dient als Historisierung für alle Releases.  
+Mit Ausnahme vom `dev`-Branch und von `hotfix`-Branches werden keine Branches vom `main`-Branch abgeleitet.  
+Jeder Commit auf den `main`-Branch zählt als neue stable-Version.
+Deshalb besitzt der `main`-Branch nur eine gekürzte Commit-History.  
+Alle Releases besitzen eine Release-Nummer. Mehr zu Release-Nummer und Versionierung in Kapitel [2.3.2](#232-versionierung).  
 
-Tatsächliche Entwicklungsarbeit muss in einem Sekundärbranch durchgeführt werden.
-Sekundärbranches werden vom Hauptbranch oder von einem anderen Sekundärbranch abgeleitet. Dieser Brnach gilt dann als Quellbranch
-Bevor ein Sekundärbranch gepushed wird sollte ein Merge vom oder Rebase auf den Quellbranch durchgeführt werden.
+Der `dev`-Branch beinhaltet die komplette Commit-History des Projektes und zählt als Ausgangspunkt für die aktive Entwicklung.  
+Jeder Branch außer `main` und `hotfix` wird vom `dev`-Branch abgeleitet.  
 
-Ein Sekundärbranch muss einen der folgenden Namen haben:
-
-- `dev`
-- `feature/*`
-- `bugfix/*`
-- `hotfix/*`
-- `concept/*`
-
-**Sollte ein Branch mit einem Ticket assoziiert sein, so muss ein Sekundärbranch einen der folgenden Namen haben:**
-
-- `feature/<ticket_nr>/*`
-- `bugfix/<ticket_nr>/*`
-- `hotfix/<ticket_nr>/*`
-- `concept/<ticket_nr>/*`
-
-Ein PR auf einen Sekundärbranch dürfen nur von Branch-Owner angenommen werden.
-Branch-Owner ist die Person, die den ältesten Commit auf dem entsprechenden Branch getätigt hat.
-Branch-Owner bei Branches, welche mit Tickets assoziiert sind, ist die Person, die das Ticket bearbeitet.
-Ausgenommen hierbei ist der `dev`-Branch.
-
+Beide Branches sind schreibgeschützt und können nur via Pull Requests modifiziert werden.
 Weitere Informationen über Pull Requests in Kapitel [3.4 Pull Requests](#34-pull-requests)
 
-### 2.3 Tags, Releases und Versionierung
+#### 2.2.2 Feature Branches
 
-#### 2.3.1 Tags und Releases
+Jedes entwickelte Feature muss in einem eigenen Branch entwickelt werden, welcher vom `dev`-Branch abgeleitet wurde.  
+Ist die Entwicklung fertig, wird der `feature`-Branch  zurück in den `dev`-Branch gemerged.  
+`feature`-Branches dürfen niemals mit dem `main`-Branch direkt interagieren.
 
-Den Contributern ist frei überlassen ob und in welchem Abstand releases veröffentlicht werden.
-Um ein Release zu erstellen wird ein bestimmter Commit mit einem Git Tag versehen.
-Releases können nur vom Stand des `main`-Branches erstellt werden.
-Sollten aus anderen Branches Releases erstellt werden, so müssen sie mit dem Postfix `-unstable` markiert werden.
+![Feature Branches](static/feature-branches.svg)
+
+#### 2.2.3 Release Branches
+
+Wenn der `dev`-Branch genug neue Features besitzt, um einen neuen Release zu erstellen, wird ein `release`-Branch erstellt.  
+Nach dem Erstellen eines `release`-Branches werden keine weiteren neuen Features in den `dev`-Branch hinzugefügt.  
+Nur Bugfixes, Dokumentation und andere Release-Relevante Änderungen sind erlaubt.
+
+![Release Branches](static/release-branches.svg)
+
+Sobald ein Release fertig ist wird dieser auf `main` und `develop` gemerged und mit einer Versionsnummer getagged.  
+Nach dem mergen ist de Release-Branch zu löschen.  
+
+#### 2.2.4 Hotfix und Bugfix Branches
+
+`hotfix`-Branches können genutzt werden um kritische Fehler in stable-Releases schnell zu beheben.  
+Ein `hotfix`-Branch wird vom `main`-Branch abgeleitet und kann nur Änderungen behinhalten die direkt zur Fehlerbehebung benötigt werden.  
+Sobald der Fehler behoben wurde muss der `hotfix`-Branch in den `main`-, `develop`- und ggf. in den aktuellen `release`-Branch gemerged werden.  
+Nach dem mergen ist der neue `main`-Branch mit einer neuen Version zu taggen und der `hotfix`-Branch muss gelöscht werden.  
+
+![Hotfix Branches](static/hotfix-branches.svg)
+
+Ein `bugfix`-Branch hingegen wird genutzt um Fehler in Releasekandidaten zu beheben.  
+Sie werden entsprechend von einem `release`-Branch abgeleitet und beinhalten nur Codeänderungen, welche direkr zur Fehlerbehebung benötigt werden.  
+Sobald der Fehler behoben wurde muss der `bugfix`-Branch in den `release`-Branch gemerged werden.  
+Nach dem mergen ist der `bugfix`-Branch zu löschen.
+
+### 2.3 Releases und Versionierung
+
+Ein gleichbleibendes Releasemanagement und geordnete Versionierung helfen eine bessere Übersicht zu erschaffen und die "Dependency Hell" zu minimieren.  
+Somit gelten für diese Punkte auch einige Regeln.
+
+#### 2.3.1 Releases
+
+Siehe Kapitel [2.2 Git Branching-Strategie](#22-git-branching-strategie) für weitere Informationen für das generelle Vorgehen und die Nomenklatur von Release-Branches.  
+
+Ein Release-Workflow funktioniert wie folgt:
+
+1. Merge `main` in `dev` um sicherzustellen das der `dev` den produktiven Code besitzt. Dies kann Merge-Konflikte vorbeugen, wenn etwa ein Hotfix nur auf `main` und nicht auf `dev` gemerged wurde.  
+
+```text
+$ git checkout dev
+$ git merge master
+```
+
+2. Erstelle einen neuen `release`-Branch von Develop
+
+````text
+$ git checkout -b release-vX.Y.Z
+$ git push --set-upstream origin release-vX.Y.Z
+````
+
+3. Falls nötig, behebe bugs im `release`-Branch
+
+````text
+$ git checkout release-vX.Y.Z
+$ git checkout -b bugfix/<name>
+$ git push --set-upstream bugfix/<name>
+<Behebe Fehler>
+$ git commit -m "<commit nachricht>"
+$ git push
+````
+
+4. Wenn der Release fertig ist, eröffne eröffne einen neuen PR in Github
+
+5. Sobald der PR gemerged wurde kann ein neuer Release erstellt werden mit den folgenden Daten:
+    - Tag Version: `vX.Y.Z`
+    - Target: `main`
+    - Release Titel: `Release v.X.Y.Z`
+    - Description: High Level Beschreibung der wichtigsten Änderungen
+
+6. Merge `release`-Branch in den `dev`-Branch
+
+7. Lösche den `release`-Branch
 
 #### 2.3.2 Versionierung
 
 Stabile Releases (Releases vom `main`-Branch) folgen der standard [Semver](https://semver.org/)-Konvention `MAJOR.MINOR.PATCH`
-Dabei stehen `MAJOR`, `MINOR` und `PATCH` für positive Ganzzahlen und dürfen keine vorstehende "0" haben.
+Dabei stehen `MAJOR`, `MINOR` und `PATCH` für positive Ganzzahlen und dürfen keine führende "0" haben.
 Inkrementiere ...
 
 - ... MAJOR, bei breaking changes.
@@ -182,18 +245,14 @@ Inkrementiere ...
 
 ### 2.4 `.gitignore`-Datei
 
-Eine .gitignore-Datei ist eine Konfigurationsdatei in einem Git-Repository, die angibt, welche Dateien und Verzeichnisse von Git ignoriert werden sollen.
-Wenn du Änderungen an deinem Code oder deinem Projekt vornimmst und diese in einem Git-Repository verfolgst, gibt es oft Dateien oder Verzeichnisse, die automatisch generiert werden oder temporäre Daten enthalten, die du nicht im Repository speichern möchtest.
-Diese könnten beispielsweise Kompilierungsresultate, temporäre Dateien, Logdateien, Konfigurationsdateien mit vertraulichen Informationen oder andere lokale Konfigurationen sein.
+Eine `.gitignore`-Datei ist eine Konfigurationsdatei in einem Git-Repository, die angibt, welche Dateien und Verzeichnisse von Git ignoriert werden sollen.  
+Wenn eine Änderungen am Code oder Projekt vorgenommen wird und diese in einem Git-Repository verfolgst, gibt es oft Dateien oder Verzeichnisse, die automatisch generiert werden oder temporäre Daten enthalten, die nicht im Repository gespeichert werden sollen.  
+Diese könnten beispielsweise Compile-Ergebnisse, temporäre Dateien, Logdateien, Keys/Secrets oder andere lokale Konfigurationen sein.  
 
-Die .gitignore-Datei erlaubt es dir, diese Dateien und Verzeichnisse zu spezifizieren, sodass Git sie beim Commit und der Versionsverwaltung ignoriert.
-Dadurch wird verhindert, dass unnötige oder sensible Daten im Repository gespeichert werden.
-Die .gitignore-Datei enthält Muster und Pfade zu den Dateien und Verzeichnissen, die ausgeschlossen werden sollen.
+Die `.gitignore`-Datei ermöglicht es, diese Dateien und Verzeichnisse zu spezifizieren, sodass Git sie beim Commit und der Versionsverwaltung ignoriert.  
+Die `.gitignore`-Datei enthält Muster und Pfade zu den Dateien und Verzeichnissen, die ausgeschlossen werden sollen.
 
-Die Syntax der .gitignore-Datei ermöglicht die Verwendung von Wildcards und regulären Ausdrücken, um verschiedene Dateitypen oder Muster von Dateinamen zu erfassen.
-Sie ist somit ein nützliches Werkzeug, um dein Repository sauber zu halten und sicherzustellen, dass nur die relevanten Dateien und Verzeichnisse im Versionskontrollsystem verfolgt werden.
-
-Ein Projekt sollte immer eine `.gitignore`-Datei besitzen, die auf das Projekt angepasst ist.
+Die Syntax der `.gitignore`-Datei ermöglicht die Verwendung von Wildcards und regulären Ausdrücken, um verschiedene Dateitypen oder Muster von Dateinamen zu erfassen.  
 Ein Template kann sich mit Github beim Erstellen eines leeren Repositories automatisch generieren lassen.
 Alternativ biete [diese](https://github.com/pexon-consulting/github-code-repository-guidelines/blob/main/.gitignore) `.gitignore`-Datei einen guten Startpunk.
 
@@ -201,7 +260,7 @@ Alternativ biete [diese](https://github.com/pexon-consulting/github-code-reposit
 
 #### 2.5.1 Issues
 
-Bugs und Features müssen über Github Issues vorgeschlagen werden.
+Bugfixes und Features von externen Contributern müssen über Github-Issues vorgeschlagen werden.
 Sollte ein Issue für mehr als 90 Tage keine neues update bekommen gibt es als Inaktiv und muss geschlossen werden.
 Dafür lassen sich automatisch Github Actions erstellen.
 Ein respektvoller und sachlicher Umgang miteinander innerhalb der Issue-Diskusion ist hierbei selbstverständlich Pflicht.
@@ -225,7 +284,6 @@ Das Einrichten der Templates funktioniert wie folgt:
   9. Wähle die Option einen neuen Branch und PR zu erstellen
   10. Klicke auf "Commit changes"
 
-
 ## 3 Source Code und Code Commits
 
 Dieser Abschnitt listet das Regelwerk auf, welches von jedem Entwickler eines Projektes in dieser Organisation zu befolgen ist.
@@ -236,13 +294,13 @@ Dieser Abschnitt listet das Regelwerk auf, welches von jedem Entwickler eines Pr
 
 Hier eine Referenz zu den Best Practices verschiedener Sprachen:
 
-**Java**: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
-**Python**: [PEP 8 Style Guide](https://peps.python.org/pep-0008/), [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html), [The Hitchhiker's Guide to Python](https://docs.python-guide.org/)
-**JavaScript**: [JavaScript: The Right Way](http://jstherightway.org/), [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html), [W3C Javascript Best Practices](https://www.w3.org/wiki/JavaScript_best_practices)
-**TypeScript**: [AWS Follow TypeScript best practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-cdk-typescript-iac/typescript-best-practices.html), [Typescript Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)
-**HTML**: [HTML Style Guide](https://www.w3schools.com/html/html5_syntax.asp)
-**CSS**: [Organizing your CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing)
-**GoLang**: [Effective Go](https://go.dev/doc/effective_go), [GoLang best Practices](https://golangdocs.com/golang-best-practices)
+**Java**: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)  
+**Python**: [PEP 8 Style Guide](https://peps.python.org/pep-0008/), [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html), [The Hitchhiker's Guide to Python](https://docs.python-guide.org/)  
+**JavaScript**: [JavaScript: The Right Way](http://jstherightway.org/), [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html), [W3C Javascript Best Practices](https://www.w3.org/wiki/JavaScript_best_practices)  
+**TypeScript**: [AWS Follow TypeScript best practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-cdk-typescript-iac/typescript-best-practices.html), [Typescript Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)  
+**HTML**: [HTML Style Guide](https://www.w3schools.com/html/html5_syntax.asp)  
+**CSS**: [Organizing your CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing)  
+**GoLang**: [Effective Go](https://go.dev/doc/effective_go), [GoLang best Practices](https://golangdocs.com/golang-best-practices)  
 
 Weitere Guides zu diesen und weiteren Sprachen, Frameworks und Tools sind zu finden im folgenden Repository: [Awesome Guidelines](https://github.com/Kristories/awesome-guidelines)
 
@@ -266,25 +324,20 @@ Um eine saubere Commit History zu gewährleisten dürfen Changes von anderen Bra
 Dem Branch-Owner ist überlassen welche der beiden genutzt wird.
 Weitere Informationen: Siehe [Merging vs. Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 
-Beim Merge auf den `main`-Branch via PR müssen die Commits auf dem eingehenden Branch mit dem `git squash`-Befehl oder per IDE komprimiert werden.
+Beim Merge auf den `main`-Branch via PR müssen die Commits auf dem eingehenden Branch mit dem `git squash`-Befehl oder per IDE komprimiert werden.  
+GitHub kann bei einem PR-Merge alle Commits automatisch squashen wenn diese Option gewählt wurde.  
 Weitere Informationen: Siehe [Git Squash Commits](https://www.baeldung.com/ops/git-squash-commits)
 
 ### 3.4 Pull Requests
 
-**Features, Changes, Bugs, Hotfixes und weitere Änderungen an der Codebasis werden *ausschließlich* mit Hilfe von Pull Requests in den Hauptbranch übernommen.**
-
-Die Änderungen in einem Pull Request müssen Atomar sein, dass heißt:
-**Ein Pull Request = Eine, in sich abgeschlossene, Änderung**.
-
-Ein Pull Request muss von mindest einem weiteren Contributor oder Code-Owner gereviewed werden.
-Beim erstellen eines PRs muss ein Template verwendet und ausgefüllt werden. Entsprechende Templates müssen dafür im jeden Repository bereitstehen.
+Ein Pull Request muss von mindest einem weiteren Contributor oder Code-Owner gereviewed werden.  
+Beim erstellen eines PRs muss ein Template verwendet und ausgefüllt werden. Entsprechende Templates müssen dafür im jeden Repository bereitstehen.  
 Templates sind als Markdown-Datei (`.md`) anzulegen und können in dem Ordner `.github/PULL_REQUEST_TEMPLATE` hinterlegt werden.
-
 
 ### 3.5 Lizenz
 
-Für unsere Open Source Projekte nutzen wir Grundsätzlich die [GPL3 Lizenz](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3).
-Diese ist in jeder Codebase beizulegen.
+Für unsere Open Source Projekte wird Grundsätzlich die [GPL3 Lizenz](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3) genutzt.  
+Diese ist in jeder Codebase beizulegen.  
 Abweichende Lizenzen sind je nach Projekt aus verschiedenen Gründen auch nutzbar.
 
 ### 3.6 Code Coverage
@@ -325,26 +378,20 @@ Der Request- und Response-Body sollte der standard JSON-Konvention entsprechen.
 Vermeide Verben für URL Pfade die Ressourcen ansprechen, nutze stattdessen Nomen.
 Nutze Verben für Non-Ressourcen.
 
-| **VERB** | **Beschreibung**                                          |
-| -------- | --------------------------------------------------------- |
-| GET      | Genutzt um eine einzelne Resource abzurufen               |
-| POST     | Genutzt um eine neue Resource oder Sub-Resource anzulegen |
-| PUT      | Genutzt um eine existierende Resource zu updaten          |
-| PATCH    | Genutzt um eine existierende Resource zu updaten          |
-| DELETE   | Genutzt um eine existierende Resource zu löschen          |
+| **VERB** | **Beschreibung**                                              |
+| -------- | --------------------------------------------------------------|
+| GET      | Genutzt um eine einzelne Resource abzurufen.                  |
+| POST     | Genutzt um eine neue Resource oder Sub-Resource anzulegen.    |
+| PUT      | Genutzt um eine existierende Resource zu überschreiben.       |
+| PATCH    | Genutzt um teile einer existierenden Resource zu updaten.     |
+| DELETE   | Genutzt um eine existierende Resource zu löschen.             |
 
 #### 4.2.2 API Antworten
 
 Eine API sollte immer eine Antwort geben, unabhängig vom Erfolg oder Qualität der Anfrage.
 Dabei enthalten die Antworten immer einen HTTP-Status Code der die Antwort am bestmöglichen Beschreibt.
 
-| **Code** | **Beschreibung**                                                             |
-| -------- | ---------------------------------------------------------------------------- |
-| 1XX      | Die Anfrage wurde empfangen und verstanden                                   |
-| 2XX      | Die Anfrage wurde empfangen, verstanden und war erfolgreich                  |
-| 3XX      | Der Client muss weitere Schritte tätigen um  den Request zu vervollständigen |
-| 4XX      | Die Anfrage hat einen Fehler, erzeugt welcher vom Client ausgeht.            |
-| 5XX      | Die Anfrage hat einen Fehler, erzeugt welcher vom Server ausgeht.            |
+Weitere Informationen zu den Status Codes sind hier zu finden: [MDN HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
 #### 4.2.3 API Dokumentation
 
@@ -358,7 +405,28 @@ Generell sollte jeder API-Endpunk die folgende Dokumentation besitzen:
 - Eine erfolgreiche Antwort sollte beispielhaft angefügt sein.
 - Potentielle Fehlernachrichten sollten angefügt sein.
 
-## 5 Quellen
+#### 4.2.4 API Security
+
+Arbeite die folgende Checklist so gut wie möglich hab beim entwickeln einer Public oder Private Web-API: [API Security Checklist](https://github.com/shieldfy/API-Security-Checklist)
+
+## 5 Logging
+
+Verwende Logging um einen Einblick in das Programm zur Laufzeit zu ermöglichen.  
+Nutze hierbei eine Standardlösung für die verwendete Programmiersprache oder Framework und erfinde das Logging-Rad nicht neu.  
+Achte dabei auf die korrekte Verwendung von Log-Levels.
+Die wichtigsten Log Level sind in folgendem Dokument beschrieben: [How to coose levels of logging](https://sematext.com/blog/logging-levels/).  
+Hier die häufigsten Log Level im Überblick:
+
+|Level| Beschreibung|
+|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fatal |   Kritischer Fehler, welche die Anwendung davon abhält weiter zu laufen.                                                                                  |
+| Error |   Ernster Fehler welcher eine und mehrere Funktionen der Anwendung beeinträchtigt.                                                                        |
+| Warn  |   Unerwartetes Verhalten in der Anwendung, welches aber den normalen Betrieb nicht beeinträchtigt.                                                        |
+| Info  |   Eine Reguläre Nachricht, weder positiv noch negativ. Sollte einen allgemeinen Einblick in den Normalbetrieb der Anwendung bieten.                       |
+| Debug |   Sollte Details für das Debugging ausgeben, jedoch nicht so granular wie Trace sein.                                                                     |
+| Trace |   Schritt für Schritt Instruktionen werden gelogged. Genaustes Level welches sehr viel Log-Nachrichten produziert. So häufig wie möglich implementieren.  |
+
+## 6 Quellen
 
 - [elsewhencode/project-guidelines](https://github.com/elsewhencode/project-guidelines)
 - [Kristories/awesome-guidelines](https://github.com/Kristories/awesome-guidelines)
